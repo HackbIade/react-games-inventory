@@ -1,21 +1,22 @@
-import { Card, Grid, CardMedia, Typography, CardContent } from "@mui/material";
 import SportsEsports from "@mui/icons-material/SportsEsports";
+import { Grid, CardMedia, Typography, CardContent } from "@mui/material";
 
+import { Container } from "./styles";
 import { GameCardProps } from "./types";
 
 export const GameCard = ({
   name,
+  cover,
   platform,
   description,
-  cover,
 }: GameCardProps) => {
   return (
-    <Card sx={{ width: 200, margin: 2 }}>
+    <Container>
       <CardMedia
-        component="img"
         height="250"
+        component="img"
+        alt={`${name}-cover`}
         image={cover || "/no-found.png"}
-        alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5">
@@ -33,6 +34,6 @@ export const GameCard = ({
           </Typography>
         )}
       </CardContent>
-    </Card>
+    </Container>
   );
 };

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Button, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 import { getGames } from "../../service";
-import { GamesType } from "../../service/games/types";
 import { GameCard } from "../../components/ui";
+import { ButtonWrapper, Container, ListContainer } from "./styles";
+import { GamesType } from "../../service/games/types";
 
 export const Home = () => {
   const [games, setGames] = useState<GamesType[]>([]);
@@ -25,21 +25,20 @@ export const Home = () => {
   }, []);
 
   return (
-    <Grid container justifyContent="center">
-      <Button
+    <Container>
+      <ButtonWrapper
         disabled
         color="primary"
         variant="outlined"
         startIcon={<AddIcon />}
-        sx={{ marginTop: 2, marginLeft: 2, minWidth: 200 }}
       >
         Add New Game
-      </Button>
-      <Grid container>
+      </ButtonWrapper>
+      <ListContainer>
         {games?.map((game, index) => (
           <GameCard key={index} {...game} />
         ))}
-      </Grid>
-    </Grid>
+      </ListContainer>
+    </Container>
   );
 };
