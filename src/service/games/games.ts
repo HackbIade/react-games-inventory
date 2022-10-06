@@ -3,9 +3,11 @@ import { AddGameResponse, GamesType, GetGamesRespoonse } from "./types";
 
 export const getGamesService = async (): Promise<GetGamesRespoonse | null> => {
   let response: GetGamesRespoonse | null = null;
+  console.log("asalazar");
+  console.log("env", import.meta.env);
   try {
     const result = await axios.post<GetGamesRespoonse>(
-      `${process.env.REACT_APP_MICROSERVICE_URL}/getGames`,
+      `${import.meta.env.VITE_MICROSERVICE_URL}/getGames`,
       {
         data: null,
       }
@@ -32,7 +34,7 @@ export const addGamesService = async (
   };
   try {
     const result = await axios.post<AddGameResponse>(
-      `${process.env.REACT_APP_MICROSERVICE_URL}/addGame`,
+      `${import.meta.env.VITE_MICROSERVICE_URL}/addGame`,
       { data }
     );
 
