@@ -3,8 +3,6 @@ import { AddGameResponse, GamesType, GetGamesRespoonse } from "./types";
 
 export const getGamesService = async (): Promise<GetGamesRespoonse | null> => {
   let response: GetGamesRespoonse | null = null;
-  console.log("asalazar");
-  console.log("env", import.meta.env);
   try {
     const result = await axios.post<GetGamesRespoonse>(
       `${import.meta.env.VITE_MICROSERVICE_URL}/getGames`,
