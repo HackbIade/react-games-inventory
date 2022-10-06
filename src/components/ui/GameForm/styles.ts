@@ -5,6 +5,7 @@ export const TextFiledWrapper = styled(TextField)`
   flex: 1;
   width: 100%;
   display: flex;
+  min-width: 350px;
   margin-bottom: 8px;
 `;
 

@@ -1,8 +1,8 @@
 export const platforms = [
-  {
-    value: "",
-    label: "Select",
-  },
+  // {
+  //   value: "",
+  //   label: "Select",
+  // },
   {
     value: "Xbox One",
     label: "Xbox One",
