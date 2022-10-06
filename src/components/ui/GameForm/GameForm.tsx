@@ -107,7 +107,7 @@ export const GameForm = () => {
               )}
             />
           </InputsGroup>
-          <ButtonWrapper type="submit" variant="contained" color="success">
+          <ButtonWrapper type="submit" variant="contained" color="primary">
             Add
           </ButtonWrapper>
         </BoxWrapper>
@@ -116,7 +116,11 @@ export const GameForm = () => {
         <Alert severity="success">Game Added!</Alert>
       </Snackbar>
       {!openDrawer && (
-        <IconButton color="success" aria-label="Add game" onClick={handleOpen}>
+        <IconButton
+          color="secondary"
+          aria-label="Add game"
+          onClick={handleOpen}
+        >
           <AddToPhotosIcon />
         </IconButton>
       )}

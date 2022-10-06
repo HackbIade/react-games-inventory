@@ -1,33 +1,15 @@
-import { useEffect, useState } from "react";
-
 import { Container } from "./styles";
-import { getGamesService } from "../../service";
-import { GamesType } from "../../service/games/types";
-import { GamesList } from "../../components/ui/GamesList";
 import { MainLayout } from "../../components/layouts/MainLayout";
+import { Typography } from "@mui/material";
 
 export const Home = () => {
-  const [games, setGames] = useState<GamesType[]>([]);
-
-  const fetchGames = async () => {
-    const gamesFetchResult = await getGamesService();
-
-    if (!!gamesFetchResult) {
-      const {
-        result: { list },
-      } = gamesFetchResult;
-      setGames(list);
-    }
-  };
-
-  useEffect(() => {
-    fetchGames();
-  }, []);
-
   return (
     <MainLayout>
       <Container>
-        <GamesList {...{ games }} />
+        <Typography variant="h4" color="primary">
+          Work in progress
+        </Typography>
+        <img src="/working.gif" />
       </Container>
     </MainLayout>
   );

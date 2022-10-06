@@ -1,8 +1,8 @@
 import SportsEsports from "@mui/icons-material/SportsEsports";
-import { Grid, CardMedia, Typography, CardContent } from "@mui/material";
+import { CardMedia, Typography, CardContent } from "@mui/material";
 
-import { Container } from "./styles";
 import { GameCardProps } from "./types";
+import { Container, PlatformContainer } from "./styles";
 
 export const GameCard = ({
   name,
@@ -25,23 +25,23 @@ export const GameCard = ({
     }
   };
   return (
-    <Container>
+    <Container variant="outlined">
+      <PlatformContainer>
+        <SportsEsports fontSize="small" color={getColor()} />
+      </PlatformContainer>
       <CardMedia
-        height="250"
+        height="180"
         component="img"
         alt={`${name}-cover`}
         image={cover || "/no-found.png"}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5">
+        <Typography gutterBottom variant="body1">
           {name || "Pending..."}
         </Typography>
-        <Grid container>
-          <SportsEsports color={getColor()} sx={{ mr: 1 }} />
-          <Typography color={getColor()} gutterBottom variant="body1">
-            {platform || "Pending"}
-          </Typography>
-        </Grid>
+        <Typography color="GrayText" gutterBottom variant="body2">
+          {platform || "Pending"}
+        </Typography>
         {!!description && (
           <Typography variant="body2" color="text.secondary">
             {description}

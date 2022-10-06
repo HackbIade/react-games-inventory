@@ -1,4 +1,5 @@
 import { AppNavbar } from "../ui";
+import { Container } from "./styles";
 import { MainLayoutProps } from "./types";
 
 export const MainLayout: React.FC<React.PropsWithChildren<MainLayoutProps>> = ({
@@ -8,7 +9,7 @@ export const MainLayout: React.FC<React.PropsWithChildren<MainLayoutProps>> = ({
   return (
     <>
       <AppNavbar {...{ title }} />
-      <main>{children}</main>
+      <Container>{children}</Container>
     </>
   );
 };

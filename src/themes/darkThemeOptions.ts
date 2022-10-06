@@ -7,4 +7,13 @@ export const darkThemeOptions: ThemeOptions = {
   },
 };
 
-export const theme = createTheme(darkThemeOptions);
+export const theme = createTheme(darkThemeOptions, {
+  palette: {
+    primary: {
+      main: "#FECE03",
+    },
+    secondary: {
+      main: "#121212",
+    },
+  },
+});

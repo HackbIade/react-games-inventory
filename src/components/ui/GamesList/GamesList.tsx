@@ -9,7 +9,7 @@ export const GamesList = ({ games }: GameListProps) => {
         ? games.map((game, index) => <GameCard key={index} {...game} />)
         : [...Array.from({ length: 4 })].map((_, index) => (
             <CardSkeleton
-              width={300}
+              width={180}
               height={400}
               variant="rectangular"
               key={`skeleton-${index}`}
