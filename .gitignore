@@ -25,3 +25,5 @@ dist-ssr
 
 # Others
 .firebase
+yarn.lock
+.env

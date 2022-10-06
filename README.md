@@ -1,1 +1,20 @@
-# Games Inventory
+# <span style="color: #FECE03">Games Inventory </span> Repository
+
+![Framework](https://img.shields.io/badge/Framework-React-green?style=flat-square) ![GitHub package.json version](https://img.shields.io/github/package-json/v/HackbIade/react-games-inventory?style=flat-square) [![GitHub license](https://img.shields.io/github/license/HackbIade/react-games-inventory?style=flat-square)](https://github.com/HackbIade/react-games-inventory/blob/main/LICENSE)
+
+## 📦 Qué continen?
+
+- Aplicación Frontend para almacenar Juegos Coleccionados por Plataforma 🎮
+
+## ⚙️ Servicios
+
+- **addGame**: API Rest para agregar juego a la colección
+- **getGames**: API Rest para listar de forma no páginada los juegos coleccionados
+
+## 🏁 Instalación & uso
+
+```bash
+  yarn
+
+  yarn dev
+```

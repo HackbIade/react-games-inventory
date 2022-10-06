@@ -5,8 +5,10 @@ export const getGamesService = async (): Promise<GetGamesRespoonse | null> => {
   let response: GetGamesRespoonse | null = null;
   try {
     const result = await axios.post<GetGamesRespoonse>(
-      "https://us-central1-games-inventory.cloudfunctions.net/getGames",
-      { data: null }
+      `${process.env.REACT_APP_MICROSERVICE_URL}/getGames`,
+      {
+        data: null,
+      }
     );
 
     if (result?.data) {
@@ -30,7 +32,7 @@ export const addGamesService = async (
   };
   try {
     const result = await axios.post<AddGameResponse>(
-      "https://us-central1-games-inventory.cloudfunctions.net/addGame",
+      `${process.env.REACT_APP_MICROSERVICE_URL}/addGame`,
       { data }
     );
 
