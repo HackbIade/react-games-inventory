@@ -17,3 +17,10 @@ export interface GamesType {
   tags?: string[];
   id: string;
 }
+
+export interface AddGameResponse {
+  result: {
+    data: GamesType;
+    message: string;
+  };
+}

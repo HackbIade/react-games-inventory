@@ -10,6 +10,20 @@ export const GameCard = ({
   platform,
   description,
 }: GameCardProps) => {
+  const getColor = () => {
+    switch (platform) {
+      case "Nintendo Switch":
+        return "error";
+      case "Play Station 4":
+      case "Play Station 5":
+        return "info";
+      case "Xbox":
+      case "Xbox One":
+      case "Xbox Series":
+      default:
+        return "success";
+    }
+  };
   return (
     <Container>
       <CardMedia
@@ -23,8 +37,8 @@ export const GameCard = ({
           {name || "Pending..."}
         </Typography>
         <Grid container>
-          <SportsEsports color="primary" sx={{ mr: 1 }} />
-          <Typography color="primary" gutterBottom variant="body1">
+          <SportsEsports color={getColor()} sx={{ mr: 1 }} />
+          <Typography color={getColor()} gutterBottom variant="body1">
             {platform || "Pending"}
           </Typography>
         </Grid>

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
 import { Container } from "./styles";
-import { getGames } from "../../service";
+import { getGamesService } from "../../service";
 import { GamesType } from "../../service/games/types";
-import { GameForm } from "../../components/ui/GameForm";
 import { GamesList } from "../../components/ui/GamesList";
+import { MainLayout } from "../../components/layouts/MainLayout";
 
 export const Home = () => {
   const [games, setGames] = useState<GamesType[]>([]);
 
   const fetchGames = async () => {
-    const gamesFetchResult = await getGames();
+    const gamesFetchResult = await getGamesService();
 
     if (!!gamesFetchResult) {
       const {
@@ -21,13 +21,14 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    // fetchGames();
+    fetchGames();
   }, []);
 
   return (
-    <Container>
-      <GameForm />
-      <GamesList {...{ games }} />
-    </Container>
+    <MainLayout>
+      <Container>
+        <GamesList {...{ games }} />
+      </Container>
+    </MainLayout>
   );
 };

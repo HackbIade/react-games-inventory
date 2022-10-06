@@ -13,7 +13,7 @@ export const ListContainer = styled.div`
   display: flex;
 
   -webkit-flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 export const CardSkeleton = styled(Skeleton)`
