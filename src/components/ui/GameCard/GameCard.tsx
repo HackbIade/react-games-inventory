@@ -33,7 +33,7 @@ export const GameCard = ({
         height="250"
         component="img"
         alt={`${name}-cover`}
-        image={cover || "/no-found.png"}
+        image={cover || "/images/no-found.png"}
       />
       <CardContent>
         <Typography gutterBottom variant="body1">

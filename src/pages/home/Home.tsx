@@ -1,17 +1,30 @@
-import { Typography } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Container } from "./styles";
-import { MainLayout } from "../../components/layouts/MainLayout";
+import { variants } from "./animation";
+import { AccesButton } from "../../components/ui";
+import { Title, UserInput, Container, Description } from "./styles";
 
 export const Home = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<string>("");
+
+  const inputChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setUser(value);
+  };
+
+  const handleAccess = () => {
+    navigate(`/collection?user=${user}`);
+  };
+
   return (
-    <MainLayout>
-      <Container>
-        <Typography variant="h4" color="primary">
-          Work in progress
-        </Typography>
-        <img src="/working.gif" />
-      </Container>
-    </MainLayout>
+    <Container {...{ variants }} initial="hidden" animate="visible">
+      <Title>Inventory</Title>
+      <Description>TO GAMES & CONSOLES</Description>
+      <UserInput value={user} onChange={inputChange} />
+      <AccesButton show={!!user} onClick={handleAccess} />
+    </Container>
   );
 };
