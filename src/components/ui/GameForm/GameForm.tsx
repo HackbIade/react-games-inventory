@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Alert, IconButton, Snackbar } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
+import { Alert, IconButton, Snackbar } from "@mui/material";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 
 import {
@@ -23,19 +24,26 @@ export const GameForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+  const [searchParams] = useSearchParams();
   const [openSnack, setOpenSnack] = useState<boolean>(false);
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+
+  const user = searchParams.get("user") || "";
 
   const handleOpen = () => {
     setOpenDrawer(true);
   };
 
-  const addGame = async (data: Omit<GamesType, "id">) => {
+  const addGame = async (game: GamesType) => {
     const {
-      result: { message },
-    } = await addGamesService(data);
+      result: { status },
+    } = await addGamesService({
+      user,
+      games: [game],
+      userCode: import.meta.env.VITE_USER_CODE,
+    });
 
-    if (message === "Game added sucesfuly!") {
+    if (status === "success") {
       reset();
       setOpenSnack(true);
       setOpenDrawer(false);
@@ -115,7 +123,7 @@ export const GameForm = () => {
       <Snackbar open={openSnack} autoHideDuration={6000}>
         <Alert severity="success">Game Added!</Alert>
       </Snackbar>
-      {!openDrawer && (
+      {!openDrawer && !!user && (
         <IconButton
           color="secondary"
           aria-label="Add game"

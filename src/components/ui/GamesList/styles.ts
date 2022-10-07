@@ -1,5 +1,5 @@
-import { Skeleton } from "@mui/material";
 import styled from "styled-components";
+import { Skeleton } from "@mui/material";
 
 export const ListContainer = styled.div`
   padding: 0;

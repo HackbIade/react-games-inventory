@@ -1,13 +1,22 @@
 import axios from "axios";
-import { AddGameResponse, GamesType, GetGamesRespoonse } from "./types";
+import {
+  GetGamesRequest,
+  AddGamesRequest,
+  GetGamesResponse,
+  AddGamesResponse,
+} from "./types";
 
-export const getGamesService = async (): Promise<GetGamesRespoonse | null> => {
-  let response: GetGamesRespoonse | null = null;
+export const getGamesService = async ({
+  user,
+}: GetGamesRequest): Promise<GetGamesResponse | null> => {
+  let response: GetGamesResponse | null = null;
   try {
-    const result = await axios.post<GetGamesRespoonse>(
-      `${import.meta.env.VITE_MICROSERVICE_URL}/getGames`,
+    const result = await axios.post<GetGamesResponse>(
+      `${import.meta.env.VITE_MICROSERVICE_URL}/getGamesFromUser`,
       {
-        data: null,
+        data: {
+          user,
+        },
       }
     );
 
@@ -22,17 +31,17 @@ export const getGamesService = async (): Promise<GetGamesRespoonse | null> => {
 };
 
 export const addGamesService = async (
-  data: Omit<GamesType, "id">
-): Promise<AddGameResponse> => {
-  let response: AddGameResponse = {
+  data: AddGamesRequest
+): Promise<AddGamesResponse> => {
+  let response: AddGamesResponse = {
     result: {
-      data: { id: "" },
+      status: "Failed",
       message: "Failed",
     },
   };
   try {
-    const result = await axios.post<AddGameResponse>(
-      `${import.meta.env.VITE_MICROSERVICE_URL}/addGame`,
+    const result = await axios.post<AddGamesResponse>(
+      `${import.meta.env.VITE_MICROSERVICE_URL}/addGamesToUser`,
       { data }
     );
 

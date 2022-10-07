@@ -6,9 +6,6 @@ export const Container = styled(Card)`
   width: 180px;
   max-height: 400px;
   position: relative;
-  @media (max-width: 400px) {
-    width: 80%;
-  }
 `;
 
 export const PlatformContainer = styled.div`

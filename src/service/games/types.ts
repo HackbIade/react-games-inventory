@@ -1,9 +1,3 @@
-export interface GetGamesRespoonse {
-  result: {
-    list: GamesType[];
-  };
-}
-
 export interface GamesType {
   addedToCollection?: Date;
   completionDate?: Date;
@@ -15,12 +9,24 @@ export interface GamesType {
   startedPlayingDate?: Date;
   status?: string;
   tags?: string[];
-  id: string;
+}
+export interface GetGamesResponse {
+  result: GamesType[];
 }
 
-export interface AddGameResponse {
+export interface GetGamesRequest {
+  user: string;
+}
+
+export interface AddGamesResponse {
   result: {
-    data: GamesType;
+    status: string;
     message: string;
   };
+}
+
+export interface AddGamesRequest {
+  user: string;
+  userCode: string;
+  games: GamesType[];
 }

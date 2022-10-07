@@ -30,7 +30,7 @@ export const GameCard = ({
         <SportsEsports fontSize="small" color={getColor()} />
       </PlatformContainer>
       <CardMedia
-        height="180"
+        height="250"
         component="img"
         alt={`${name}-cover`}
         image={cover || "/no-found.png"}
