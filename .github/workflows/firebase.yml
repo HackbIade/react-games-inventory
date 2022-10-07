@@ -22,8 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install -g yarn
       - name: yarn install, build and test
-        run: |
-          yarn add
+        run: yarn add
           yarn build
       - name: Archive Build
         uses: actions/upload-artifact@v2
