@@ -35,8 +35,8 @@ export const addGamesService = async (
 ): Promise<AddGamesResponse> => {
   let response: AddGamesResponse = {
     result: {
-      status: "Failed",
-      message: "Failed",
+      message: "",
+      status: "info",
     },
   };
   try {
@@ -48,8 +48,9 @@ export const addGamesService = async (
     if (result?.data) {
       response = result.data;
     }
-  } catch (error) {
-    console.log("ups");
+  } catch (error: any) {
+    response.result.status = "error";
+    response.result.message = error.response.data.error.message;
   } finally {
     return response;
   }

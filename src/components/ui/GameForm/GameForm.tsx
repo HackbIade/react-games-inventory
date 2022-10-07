@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
-import { Alert, IconButton, Snackbar } from "@mui/material";
-import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
+import { Alert, AlertColor, Snackbar } from "@mui/material";
 
 import {
   Separator,
@@ -11,127 +9,124 @@ import {
   ButtonWrapper,
   TextFiledWrapper,
 } from "./styles";
-import { FormValues } from "./types";
 import { platforms } from "./constants";
-import { CustomDrawer } from "../CustomDrawer";
 import { addGamesService } from "../../../service";
+import { FormValues, GameFormProps } from "./types";
 import { GamesType } from "../../../service/games/types";
 
-export const GameForm = () => {
+export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
   const {
     reset,
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const [searchParams] = useSearchParams();
-  const [openSnack, setOpenSnack] = useState<boolean>(false);
-  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const [snackState, setSnackState] = useState<{
+    open: boolean;
+    status: AlertColor;
+    message: string;
+  }>({ open: false, status: "success", message: "" });
 
-  const user = searchParams.get("user") || "";
-
-  const handleOpen = () => {
-    setOpenDrawer(true);
-  };
-
-  const addGame = async (game: GamesType) => {
+  const addGame = async (userCode: string, game: GamesType) => {
     const {
-      result: { status },
+      result: { status, message },
     } = await addGamesService({
       user,
+      userCode,
       games: [game],
-      userCode: import.meta.env.VITE_USER_CODE,
     });
 
     if (status === "success") {
       reset();
-      setOpenSnack(true);
       setOpenDrawer(false);
+      return;
     }
+    setSnackState({ open: true, status, message });
   };
 
-  const onSubmit = handleSubmit((data) => addGame(data));
+  const onSubmit = handleSubmit(({ userCode, ...game }) =>
+    addGame(userCode, game)
+  );
 
   return (
-    <>
-      <CustomDrawer
-        {...{ open: openDrawer, setOpen: setOpenDrawer }}
-        anchor="bottom"
-      >
-        <BoxWrapper component="form" onSubmit={onSubmit}>
-          <InputsGroup>
-            <Controller
-              name="name"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <TextFiledWrapper
-                  {...field}
-                  label="Name"
-                  error={!!errors?.name}
-                  helperText="Required*"
-                  id="outlined-error-helper-text"
-                />
-              )}
-            />
-            <Separator />
-            <Controller
-              name="cover"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <TextFiledWrapper
-                  {...field}
-                  label="Cover"
-                  helperText="Required*"
-                  error={!!errors?.cover}
-                  id="outlined-error-helper-text"
-                />
-              )}
-            />
-            <Separator />
-            <Controller
-              name="platform"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <TextFiledWrapper
-                  select
-                  label="Platform"
-                  SelectProps={{
-                    native: true,
-                  }}
-                  {...field}
-                  error={!!errors?.platform}
-                  id="outlined-select-currency-native"
-                  helperText="Please select the platform"
-                >
-                  {platforms.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </TextFiledWrapper>
-              )}
-            />
-          </InputsGroup>
-          <ButtonWrapper type="submit" variant="contained" color="primary">
-            Add
-          </ButtonWrapper>
-        </BoxWrapper>
-      </CustomDrawer>
-      <Snackbar open={openSnack} autoHideDuration={6000}>
-        <Alert severity="success">Game Added!</Alert>
+    <BoxWrapper component="form" onSubmit={onSubmit}>
+      <Snackbar open={snackState.open} autoHideDuration={6000}>
+        <Alert severity={snackState.status}>{snackState.message}</Alert>
       </Snackbar>
-      {!openDrawer && !!user && (
-        <IconButton
-          color="secondary"
-          aria-label="Add game"
-          onClick={handleOpen}
-        >
-          <AddToPhotosIcon />
-        </IconButton>
-      )}
-    </>
+      <InputsGroup>
+        <Controller
+          name="userCode"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextFiledWrapper
+              {...field}
+              label="User code"
+              helperText="Required*"
+              error={!!errors?.userCode}
+              id="outlined-error-helper-text"
+            />
+          )}
+        />
+        <Separator />
+        <Controller
+          name="name"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextFiledWrapper
+              {...field}
+              label="Name"
+              error={!!errors?.name}
+              helperText="Required*"
+              id="outlined-error-helper-text"
+            />
+          )}
+        />
+        <Separator />
+        <Controller
+          name="cover"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextFiledWrapper
+              {...field}
+              label="Cover"
+              helperText="Required*"
+              error={!!errors?.cover}
+              id="outlined-error-helper-text"
+            />
+          )}
+        />
+        <Separator />
+        <Controller
+          name="platform"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextFiledWrapper
+              select
+              label="Platform"
+              SelectProps={{
+                native: true,
+              }}
+              {...field}
+              error={!!errors?.platform}
+              id="outlined-select-currency-native"
+              helperText="Please select the platform"
+            >
+              {platforms.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </TextFiledWrapper>
+          )}
+        />
+      </InputsGroup>
+      <ButtonWrapper type="submit" variant="contained" color="primary">
+        Add
+      </ButtonWrapper>
+    </BoxWrapper>
   );
 };

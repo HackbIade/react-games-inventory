@@ -3,13 +3,19 @@ import { CustomDrawerProps } from "./types";
 
 export const CustomDrawer: React.FC<
   React.PropsWithChildren<CustomDrawerProps>
-> = ({ size, setOpen, children, open = false, anchor = "bottom" }) => {
+> = ({
+  size,
+  children,
+  setOpenDrawer,
+  anchor = "bottom",
+  openDrawer = false,
+}) => {
   const onClose = () => {
-    setOpen(false);
+    setOpenDrawer(false);
   };
 
   return (
-    <DrawerContainer {...{ anchor, open, onClose, size }}>
+    <DrawerContainer {...{ anchor, open: openDrawer, onClose, size }}>
       {children}
     </DrawerContainer>
   );

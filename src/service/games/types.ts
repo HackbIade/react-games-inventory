@@ -1,3 +1,5 @@
+import { AlertColor } from "@mui/material";
+
 export interface GamesType {
   addedToCollection?: Date;
   completionDate?: Date;
@@ -20,8 +22,8 @@ export interface GetGamesRequest {
 
 export interface AddGamesResponse {
   result: {
-    status: string;
     message: string;
+    status: AlertColor;
   };
 }
 

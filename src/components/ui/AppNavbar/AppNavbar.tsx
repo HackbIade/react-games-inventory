@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 
 import { NavbarProps } from "./types";
-import { GameForm } from "../GameForm";
+import { AddGameNavbarButton } from "../AddGameNavbarButton";
 
 export const AppNavbar = ({ title }: NavbarProps) => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export const AppNavbar = ({ title }: NavbarProps) => {
             {title || "Games Inventory"}
           </Typography>
         </Button>
-        <GameForm />
+        <AddGameNavbarButton />
       </Toolbar>
     </AppBar>
   );
