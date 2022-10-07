@@ -4,17 +4,18 @@
 
 ## 📦 Qué continen?
 
-- Aplicación Frontend para almacenar Juegos Coleccionados por Plataforma 🎮
+- Aplicación Frontend para almacenar Juegos Coleccionados por usuario, soportado con backend [Games Inventory Cloud Funtions 🎮](https://github.com/HackbIade/cloud-functions-games-inventory)
 
 ## ⚙️ Servicios
 
-- **addGame**: API Rest para agregar juego a la colección
-- **getGames**: API Rest para listar de forma no páginada los juegos coleccionados
+- **addGamesToUser**: API Rest para agregar juego a la colección
+- **getGamesFromUser**: API Rest para listar de forma no páginada los juegos coleccionados
 
 ## 🏁 Instalación & uso
 
 ```bash
-  yarn
-
-  yarn dev
+  # instalar dependencias
+    yarn
+  # montar servidor en localhost
+    yarn dev
 ```
