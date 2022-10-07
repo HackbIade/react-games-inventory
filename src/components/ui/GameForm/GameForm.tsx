@@ -77,6 +77,7 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
             <TextFiledWrapper
               {...field}
               label="Name"
+              autoComplete="off"
               error={!!errors?.name}
               helperText="Required*"
               id="outlined-error-helper-text"
@@ -92,6 +93,7 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
             <TextFiledWrapper
               {...field}
               label="Cover"
+              autoComplete="off"
               helperText="Required*"
               error={!!errors?.cover}
               id="outlined-error-helper-text"
