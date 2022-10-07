@@ -20,13 +20,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build
-          key: build
+          path: build
+
   deploy:
-    name: Deploy
+    name: deploy
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v2
+      - uses: actions/checkout@v3
       - name: Download Build
         uses: actions/download-artifact@v2
         with:
