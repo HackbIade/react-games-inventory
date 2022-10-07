@@ -1,6 +1,7 @@
+import { Typography } from "@mui/material";
+
 import { Container } from "./styles";
 import { MainLayout } from "../../components/layouts/MainLayout";
-import { Typography } from "@mui/material";
 
 export const Home = () => {
   return (

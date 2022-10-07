@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { AppContainer } from "./styles";
-import { Home, AddGames } from "../pages";
-import { Collection } from "../pages/Collection";
+import { Home, AddGames, Collection } from "../pages";
 
 export const AppRouter = () => {
   return (

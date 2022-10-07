@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "env-cmd -f .env yarn build && firebase deploy --only hosting"
+    "deploy": "env-cmd -f .env npm build && firebase deploy --only hosting"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -17,6 +17,7 @@
     "@mui/styled-engine-sc": "^5.10.6",
     "@mui/system": "^5.10.8",
     "axios": "^1.0.0",
+    "ci": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.36.1",
