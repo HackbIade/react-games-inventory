@@ -1,6 +1,6 @@
 # <span style="color: #FECE03">Games Inventory </span> Repository
 
-![Framework](https://img.shields.io/badge/Framework-React-green?style=flat-square) ![GitHub package.json version](https://img.shields.io/github/package-json/v/HackbIade/react-games-inventory?style=flat-square) [![GitHub license](https://img.shields.io/github/license/HackbIade/react-games-inventory?style=flat-square)](https://github.com/HackbIade/react-games-inventory/blob/main/LICENSE)
+![Framework](https://img.shields.io/badge/Framework-React-red?style=flat-square) ![GitHub package.json version](https://img.shields.io/github/package-json/v/HackbIade/react-games-inventory?style=flat-square) [![GitHub license](https://img.shields.io/github/license/HackbIade/react-games-inventory?style=flat-square)](https://github.com/HackbIade/react-games-inventory/blob/main/LICENSE)
 
 ## 📦 Qué continen?
 

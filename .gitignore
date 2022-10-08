@@ -27,3 +27,4 @@ build-ssr
 .firebase
 yarn.lock
 .env
+.env.prod

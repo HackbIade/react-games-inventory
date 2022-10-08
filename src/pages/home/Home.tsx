@@ -23,7 +23,7 @@ export const Home = () => {
     <Container {...{ variants }} initial="hidden" animate="visible">
       <Title>Inventory</Title>
       <Description>TO GAMES & CONSOLES</Description>
-      <UserInput value={user} onChange={inputChange} />
+      <UserInput autoComplete="off" value={user} onChange={inputChange} />
       <AccesButton show={!!user} onClick={handleAccess} />
     </Container>
   );

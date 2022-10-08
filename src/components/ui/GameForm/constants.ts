@@ -12,15 +12,15 @@ export const platforms = [
     label: "Nintendo Switch",
   },
   {
-    value: "Play Station 4",
-    label: "Play Station 4",
+    value: "PlayStation 4",
+    label: "PlayStation 4",
   },
   {
     value: "Xbox Series",
     label: "Xbox Series",
   },
   {
-    value: "Play Station 5",
-    label: "Play Station 5",
+    value: "PlayStation 5",
+    label: "PlayStation 5",
   },
 ];

@@ -13,6 +13,7 @@ import { platforms } from "./constants";
 import { addGamesService } from "../../../service";
 import { FormValues, GameFormProps } from "./types";
 import { GamesType } from "../../../service/games/types";
+import { CONSOLES_NAMES } from "../../../constants/consoles";
 
 export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
   const {
@@ -117,9 +118,13 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
               id="outlined-select-currency-native"
               helperText="Please select the platform"
             >
-              {platforms.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
+              {(
+                Object.keys(CONSOLES_NAMES) as Array<
+                  keyof typeof CONSOLES_NAMES
+                >
+              ).map((key) => (
+                <option key={key} value={CONSOLES_NAMES[key]}>
+                  {CONSOLES_NAMES[key]}
                 </option>
               ))}
             </TextFiledWrapper>

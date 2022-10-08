@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-
-import { Container } from "./styles";
-import { getGamesService } from "../../service";
 import { useSearchParams } from "react-router-dom";
+
+import { getGamesService } from "../../service";
 import { GamesType } from "../../service/games/types";
-import { GamesList } from "../../components/ui/GamesList";
-import { MainLayout } from "../../components/layouts/MainLayout";
+import { Container, Description, Navbar } from "./styles";
+import { AddGamesButton, GamesList } from "../../components/ui";
 
 export const Collection = () => {
   const [searchParams] = useSearchParams();
-  const [games, setGames] = useState<GamesType[]>([]);
+  const [games, setGames] = useState<GamesType[]>();
 
   const fetchGames = async () => {
     const user = searchParams.get("user") || "";
@@ -26,10 +25,12 @@ export const Collection = () => {
   }, []);
 
   return (
-    <MainLayout>
-      <Container>
-        <GamesList {...{ games }} />
-      </Container>
-    </MainLayout>
+    <Container>
+      <Navbar>
+        <Description>Collection</Description>
+        <AddGamesButton />
+      </Navbar>
+      <GamesList {...{ games }} />
+    </Container>
   );
 };

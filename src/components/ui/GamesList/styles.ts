@@ -2,21 +2,24 @@ import styled from "styled-components";
 import { Skeleton } from "@mui/material";
 
 export const ListContainer = styled.div`
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-flex-flow: row wrap;
-  justify-content: center;
+  margin: 0 auto;
+  display: grid;
+  grid-row-gap: 8px;
+  grid-column-gap: 0px;
+  grid-template-columns: repeat(5, 1fr);
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const CardSkeleton = styled(Skeleton)`
-  margin: 8px;
-  border-radius: 8px;
+  margin: 4px;
+  border-radius: 4px;
+  display: inline-block;
 `;

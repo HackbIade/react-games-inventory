@@ -1,12 +1,12 @@
 import { useState } from "react";
+
 import { useSearchParams } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 
 import { GameForm } from "../GameForm";
 import { CustomDrawer } from "../CustomDrawer";
+import { AddButton, Text } from "./styles";
 
-export const AddGameNavbarButton = () => {
+export const AddGamesButton = () => {
   const [searchParams] = useSearchParams();
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
@@ -21,14 +21,10 @@ export const AddGameNavbarButton = () => {
       <CustomDrawer {...{ openDrawer, setOpenDrawer }} anchor="bottom">
         <GameForm {...{ user, setOpenDrawer }} />
       </CustomDrawer>
-      {!openDrawer && !!user && (
-        <IconButton
-          color="secondary"
-          onClick={handleOpen}
-          aria-label="Add game"
-        >
-          <AddToPhotosIcon />
-        </IconButton>
+      {!!user && (
+        <AddButton color="primary" onClick={handleOpen} aria-label="Add game">
+          <Text>Agregar Juego</Text>
+        </AddButton>
       )}
     </>
   );
