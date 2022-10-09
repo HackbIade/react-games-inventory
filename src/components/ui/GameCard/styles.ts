@@ -1,8 +1,9 @@
 import { Card } from "@mui/material";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled(Card)`
   margin: 4px;
+  max-width: 200px;
   max-height: 400px;
   position: relative;
   background: linear-gradient(
@@ -18,12 +19,18 @@ export const Container = styled(Card)`
   border-color: #000000;
 `;
 
-export const PlatformContainer = styled.div`
-  top: 0px;
+export const PlatformContainer = styled.img<{ bg?: string }>`
   right: 0px;
+  bottom: 0px;
   display: flex;
+  padding-right: 3px;
+  padding-bottom: 3px;
   position: absolute;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  ${({ bg }) =>
+    bg &&
+    css`
+      background-color: ${bg};
+    `}
 `;

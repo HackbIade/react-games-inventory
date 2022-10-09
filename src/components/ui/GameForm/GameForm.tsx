@@ -39,7 +39,7 @@ export const GameForm = ({ user }: GameFormProps) => {
     });
 
     if (status === "success") {
-      reset({ name: "", cover: "", platform: "" });
+      reset({ name: "", cover: "", platform: "", userCode });
       setSnackState({ open: true, status, message });
     }
     setDisabled(false);
