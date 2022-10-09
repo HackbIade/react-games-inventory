@@ -9,13 +9,12 @@ import {
   ButtonWrapper,
   TextFiledWrapper,
 } from "./styles";
-import { platforms } from "./constants";
 import { addGamesService } from "../../../service";
 import { FormValues, GameFormProps } from "./types";
 import { GamesType } from "../../../service/games/types";
 import { CONSOLES_NAMES } from "../../../constants/consoles";
 
-export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
+export const GameForm = ({ user }: GameFormProps) => {
   const {
     reset,
     control,
@@ -24,11 +23,13 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
   } = useForm<FormValues>();
   const [snackState, setSnackState] = useState<{
     open: boolean;
-    status: AlertColor;
     message: string;
+    status: AlertColor;
   }>({ open: false, status: "success", message: "" });
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const addGame = async (userCode: string, game: GamesType) => {
+    setDisabled(true);
     const {
       result: { status, message },
     } = await addGamesService({
@@ -38,10 +39,10 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
     });
 
     if (status === "success") {
-      reset();
-      setOpenDrawer(false);
-      return;
+      reset({ name: "", cover: "", platform: "" });
+      setSnackState({ open: true, status, message });
     }
+    setDisabled(false);
     setSnackState({ open: true, status, message });
   };
 
@@ -51,7 +52,11 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
 
   return (
     <BoxWrapper component="form" onSubmit={onSubmit}>
-      <Snackbar open={snackState.open} autoHideDuration={6000}>
+      <Snackbar
+        open={snackState.open}
+        autoHideDuration={6000}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+      >
         <Alert severity={snackState.status}>{snackState.message}</Alert>
       </Snackbar>
       <InputsGroup>
@@ -131,7 +136,12 @@ export const GameForm = ({ user, setOpenDrawer }: GameFormProps) => {
           )}
         />
       </InputsGroup>
-      <ButtonWrapper type="submit" variant="contained" color="primary">
+      <ButtonWrapper
+        type="submit"
+        color="primary"
+        variant="contained"
+        {...{ disabled }}
+      >
         Add
       </ButtonWrapper>
     </BoxWrapper>
