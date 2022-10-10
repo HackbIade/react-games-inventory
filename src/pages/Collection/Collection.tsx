@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { GamesType } from "../../types";
 import { getGamesService } from "../../service";
-import { GamesType } from "../../service/games/types";
 import { Container, Description, Navbar } from "./styles";
 import { AddGamesButton, GamesList } from "../../components/ui";
 

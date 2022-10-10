@@ -1,17 +1,7 @@
 import { AlertColor } from "@mui/material";
 
-export interface GamesType {
-  addedToCollection?: Date;
-  completionDate?: Date;
-  cover?: string;
-  digitalVersion?: boolean;
-  name?: string;
-  platform?: string;
-  publisher?: string;
-  startedPlayingDate?: Date;
-  status?: string;
-  tags?: string[];
-}
+import { GamesType } from "../../types";
+
 export interface GetGamesResponse {
   result: GamesType[];
 }

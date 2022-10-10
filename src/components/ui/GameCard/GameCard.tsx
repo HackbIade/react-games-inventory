@@ -2,8 +2,8 @@ import SdCardIcon from "@mui/icons-material/SdCard";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
 import { CardMedia, Typography, CardContent } from "@mui/material";
 
+import { GamesType } from "../../../types";
 import { Container, PlatformContainer } from "./styles";
-import { GamesType } from "../../../service/games/types";
 
 export const GameCard = ({
   name,

@@ -9,9 +9,9 @@ import {
   ButtonWrapper,
   TextFiledWrapper,
 } from "./styles";
+import { GamesType } from "../../../types";
 import { addGamesService } from "../../../service";
 import { FormValues, GameFormProps } from "./types";
-import { GamesType } from "../../../service/games/types";
 import { CONSOLES_NAMES } from "../../../constants/consoles";
 
 export const GameForm = ({ user }: GameFormProps) => {
