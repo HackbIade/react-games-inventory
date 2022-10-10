@@ -23,8 +23,7 @@ export const getGamesService = async ({
     if (result?.data) {
       response = result.data;
     }
-  } catch (error) {
-    console.log("ups");
+  } catch (_error) {
   } finally {
     return response;
   }

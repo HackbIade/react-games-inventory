@@ -19,9 +19,14 @@ export const GlobalState: React.FC<
   const setUserGamesList = (payload: GamesType[]) => {
     dispatch({ type: ACTION_TYPES.SET_USER_GAMES, payload });
   };
+  const setFilteredUserGamesList = (payload: GamesType[]) => {
+    dispatch({ type: ACTION_TYPES.SET_FILTERED_USER_GAMES, payload });
+  };
 
   return (
-    <GlobalContext.Provider value={{ state, setUser, setUserGamesList }}>
+    <GlobalContext.Provider
+      value={{ state, setUser, setUserGamesList, setFilteredUserGamesList }}
+    >
       {children}
     </GlobalContext.Provider>
   );

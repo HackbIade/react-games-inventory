@@ -1,6 +1,7 @@
 import { GlobalStateType } from "./types";
 
 export const APP_DEFAULT_INITIAL_STATE: GlobalStateType = {
-  user: null,
-  userGameList: null,
+  user: "",
+  userGameList: [],
+  filteredUserGameList: [],
 };

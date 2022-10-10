@@ -1,13 +1,16 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { variants } from "./animation";
+import { useGlobalContext } from "../../context";
 import { AccesButton } from "../../components/ui";
 import { Title, UserInput, Container, Description } from "./styles";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<string>("");
+  const {
+    setUser,
+    state: { user },
+  } = useGlobalContext();
 
   const inputChange = ({
     target: { value },

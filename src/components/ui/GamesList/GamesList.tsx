@@ -1,12 +1,17 @@
+import { Typography } from "@mui/material";
+
 import { GameCard } from "../GameCard";
 import { GameListProps } from "./types";
 import { CardSkeleton, ListContainer } from "./styles";
-import { Typography } from "@mui/material";
 
-export const GamesList = ({ games }: GameListProps) => {
+export const GamesList = ({
+  isError,
+  isLoading,
+  filteredUserGameList,
+}: GameListProps) => {
   return (
     <ListContainer>
-      {games === undefined &&
+      {isLoading &&
         [...Array.from({ length: 12 })].map((_, index) => (
           <CardSkeleton
             width={160}
@@ -16,11 +21,13 @@ export const GamesList = ({ games }: GameListProps) => {
           />
         ))}
 
-      {games?.map((game, index) => (
-        <GameCard key={index} {...game} />
-      ))}
+      {!isLoading &&
+        !isError &&
+        filteredUserGameList.map((game, index) => (
+          <GameCard key={index} {...game} />
+        ))}
 
-      {games?.length === 0 && (
+      {!isLoading && isError && (
         <Typography variant="h4" color="white">
           Ups! Nada que mostrar por acá
         </Typography>
