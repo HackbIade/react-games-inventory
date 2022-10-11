@@ -26,7 +26,6 @@ export const useUserGames = (): userUserGamesResponse => {
   const refetch = async () => {
     setIsError(false);
     setIsLoading(true);
-
     const response = await getGamesService({ user });
 
     if (response === null) {
@@ -43,10 +42,10 @@ export const useUserGames = (): userUserGamesResponse => {
     if (!user) {
       const userByParams = searchParams.get("user") || "";
       setUser(userByParams);
-    } else if (userGameList.length === 0) {
+    } else if (userGameList === undefined) {
       refetch();
     }
-  }, [user, userGameList]);
+  }, [user]);
 
   return {
     refetch,

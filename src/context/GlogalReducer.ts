@@ -14,7 +14,7 @@ export const globalReducer = (
         ...state,
         user: payload,
       };
-    case ACTION_TYPES.SET_USER_GAMES:
+    case ACTION_TYPES.SET_USER_GAMES_LIST:
       return {
         ...state,
         userGameList: payload,

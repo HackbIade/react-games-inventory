@@ -2,7 +2,7 @@ import { GamesType } from "../types";
 
 export interface GlobalStateType {
   user: string;
-  userGameList: GamesType[];
+  userGameList?: GamesType[];
   filteredUserGameList: GamesType[];
 }
 
@@ -15,7 +15,7 @@ export interface GlobalContextType {
 
 export enum ACTION_TYPES {
   SET_USER = "SET_USER",
-  SET_USER_GAMES = "SET_USER_GAMES",
+  SET_USER_GAMES_LIST = "SET_USER_GAMES_LIST",
   SET_FILTERED_USER_GAMES = "SET_FILTERED_USER_GAMES",
 }
 

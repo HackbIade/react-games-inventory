@@ -14,12 +14,14 @@ export const GameSearchBar = () => {
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(value);
-    const currentFilteredUserGameList = userGameList.filter(
+
+    const currentFilteredUserGameList = userGameList?.filter(
       (game) =>
         game.name?.toLowerCase()?.includes(value.toLowerCase()) ||
         game.platform?.toLowerCase()?.includes(value.toLowerCase())
     );
-    setFilteredUserGamesList(currentFilteredUserGameList);
+
+    setFilteredUserGamesList(currentFilteredUserGameList || []);
   };
 
   return (
