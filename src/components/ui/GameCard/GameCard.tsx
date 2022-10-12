@@ -4,9 +4,9 @@ import SdCardIcon from "@mui/icons-material/SdCard";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
 import { CardMedia, Typography, CardContent } from "@mui/material";
 
+import { GAME_IMAGES, PLATFORM_COLOR } from "./utils";
 import { GameCardProps } from "./type";
-import { getPlatformImage } from "./utils";
-import { Container, PlatformContainer } from "./styles";
+import { Container, PlatformContainer, PlatformImages } from "./styles";
 
 export const GameCard = ({
   name,
@@ -19,14 +19,18 @@ export const GameCard = ({
 }: GameCardProps) => {
   return (
     <motion.li
+      initial={{ y: 5, opacity: 0 }}
+      style={{ listStyleType: "none" }}
       animate={{
         y: 0.5,
         opacity: 1,
         transition: { delay: index < 10 ? index * 0.2 : 2 },
       }}
-      initial={{ y: 5, opacity: 0 }}
     >
-      <Container variant="outlined">
+      <Container variant="outlined" bc={PLATFORM_COLOR[platform]}>
+        <PlatformContainer bc={PLATFORM_COLOR[platform]}>
+          <PlatformImages alt={platform} src={GAME_IMAGES[platform]} />
+        </PlatformContainer>
         <CardMedia
           height="250"
           component="img"
@@ -46,7 +50,6 @@ export const GameCard = ({
           >
             {name}
           </Typography>
-          <PlatformContainer {...getPlatformImage(platform)} alt={platform} />
           {digitalVersion ? (
             <QrCode2Icon color="primary" fontSize="small" />
           ) : (

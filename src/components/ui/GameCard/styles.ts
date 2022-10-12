@@ -1,7 +1,7 @@
 import { Card } from "@mui/material";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const Container = styled(Card)`
+export const Container = styled(Card)<{ bc: string }>`
   margin: 4px;
   height: 368px;
   max-width: 200px;
@@ -16,21 +16,18 @@ export const Container = styled(Card)`
   box-shadow: -53.1479px -53.1479px 106.296px rgba(51, 51, 51, 0.4),
     17.716px 17.716px 70.8639px rgba(0, 0, 0, 0.8);
   border-radius: 8px;
-  border-color: #000000;
+  border-color: ${({ bc }) => bc};
 `;
 
-export const PlatformContainer = styled.img<{ bg?: string }>`
-  /* right: 0px;
-  bottom: 0px; */
+export const PlatformContainer = styled.div<{ bc?: string }>`
   display: flex;
-  /* padding-right: 3px; */
-  padding-bottom: 8px;
-  /* position: absolute; */
   align-items: center;
   justify-content: center;
-  ${({ bg }) =>
-    bg &&
-    css`
-      background-color: ${bg};
-    `}
+  background: ${({ bc }) => bc};
+`;
+
+export const PlatformImages = styled.img`
+  margin: 0px;
+  padding: 0px;
+  height: 15px;
 `;
