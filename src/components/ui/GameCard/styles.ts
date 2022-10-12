@@ -3,8 +3,8 @@ import styled, { css } from "styled-components";
 
 export const Container = styled(Card)`
   margin: 4px;
+  height: 368px;
   max-width: 200px;
-  max-height: 400px;
   position: relative;
   background: linear-gradient(
       318.96deg,

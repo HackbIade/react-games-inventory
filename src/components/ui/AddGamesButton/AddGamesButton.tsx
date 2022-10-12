@@ -1,10 +1,9 @@
 import { useState } from "react";
-
 import { useSearchParams } from "react-router-dom";
 
 import { GameForm } from "../GameForm";
-import { CustomDrawer } from "../CustomDrawer";
 import { AddButton, Text } from "./styles";
+import { CustomDrawer } from "../CustomDrawer";
 
 export const AddGamesButton = () => {
   const [searchParams] = useSearchParams();

@@ -1,16 +1,18 @@
+import { motion } from "framer-motion";
 import SdCardIcon from "@mui/icons-material/SdCard";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
 import { CardMedia, Typography, CardContent } from "@mui/material";
 
-import { GamesType } from "../../../types";
 import { Container, PlatformContainer } from "./styles";
+import { GameCardProps } from "./type";
 
 export const GameCard = ({
   name,
+  index,
   cover,
   platform,
   digitalVersion,
-}: GamesType) => {
+}: GameCardProps) => {
   const getPlatformImage = () => {
     switch (platform) {
       case "Nintendo Switch":
@@ -35,25 +37,43 @@ export const GameCard = ({
     }
   };
   return (
-    <Container variant="outlined">
-      <PlatformContainer {...getPlatformImage()} alt={platform} />
-      <CardMedia
-        height="250"
-        component="img"
-        alt={`${name}-cover`}
-        image={cover || "/images/no-found.png"}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="body1">
-          {name || "Pending..."}
-        </Typography>
+    <motion.li
+      animate={{
+        y: 0.5,
+        opacity: 1,
+        transition: { delay: index < 10 ? index * 0.3 : 3 },
+      }}
+      initial={{ y: 5, opacity: 0 }}
+    >
+      <Container variant="outlined">
+        <PlatformContainer {...getPlatformImage()} alt={platform} />
+        <CardMedia
+          height="250"
+          component="img"
+          alt={`${name}-cover`}
+          image={cover || "/images/no-found.png"}
+        />
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="body1"
+            sx={{
+              display: "-webkit-box",
+              overflow: "hidden",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2,
+            }}
+          >
+            {name}
+          </Typography>
 
-        {digitalVersion ? (
-          <QrCode2Icon color="primary" fontSize="small" />
-        ) : (
-          <SdCardIcon color="primary" fontSize="small" />
-        )}
-      </CardContent>
-    </Container>
+          {digitalVersion ? (
+            <QrCode2Icon color="primary" fontSize="small" />
+          ) : (
+            <SdCardIcon color="primary" fontSize="small" />
+          )}
+        </CardContent>
+      </Container>
+    </motion.li>
   );
 };

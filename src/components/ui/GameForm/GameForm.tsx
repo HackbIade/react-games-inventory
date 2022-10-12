@@ -12,9 +12,15 @@ import {
 import { GamesType } from "../../../types";
 import { addGamesService } from "../../../service";
 import { FormValues, GameFormProps } from "./types";
+import { useGlobalContext } from "../../../context";
 import { CONSOLES_NAMES } from "../../../constants/consoles";
 
 export const GameForm = ({ user }: GameFormProps) => {
+  const {
+    setUserGamesList,
+    state: { userGameList },
+  } = useGlobalContext();
+
   const {
     reset,
     control,
@@ -39,6 +45,14 @@ export const GameForm = ({ user }: GameFormProps) => {
     });
 
     if (status === "success") {
+      const unsortedList: GamesType[] = userGameList
+        ? [{ ...game }, ...userGameList]
+        : [{ ...game }];
+
+      const sortedList: GamesType[] = unsortedList.sort((a, b) =>
+        a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
+      );
+      setUserGamesList(sortedList);
       reset({ name: "", cover: "", platform: "", userCode });
       setSnackState({ open: true, status, message });
     }

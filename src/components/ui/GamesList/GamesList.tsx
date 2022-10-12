@@ -1,16 +1,14 @@
 import { Typography } from "@mui/material";
 
 import { GameCard } from "../GameCard";
-import { GameListProps } from "./types";
+import { listAnimation } from "./animation";
 import { CardSkeleton, ListContainer } from "./styles";
+import { useUserGames } from "../../../hooks/useUserGames";
 
-export const GamesList = ({
-  isError,
-  isLoading,
-  filteredUserGameList,
-}: GameListProps) => {
+export const GamesList = () => {
+  const { filteredUserGameList, isError, isLoading } = useUserGames();
   return (
-    <ListContainer>
+    <ListContainer variants={listAnimation} initial="hidden" animate="visible">
       {isLoading &&
         [...Array.from({ length: 12 })].map((_, index) => (
           <CardSkeleton
@@ -24,7 +22,7 @@ export const GamesList = ({
       {!isLoading &&
         !isError &&
         filteredUserGameList.map((game, index) => (
-          <GameCard key={index} {...game} />
+          <GameCard index={index} key={index} {...game} />
         ))}
 
       {!isLoading && isError && (

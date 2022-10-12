@@ -17,6 +17,7 @@ export const GlobalState: React.FC<
 
   const setUserGamesList = (payload: GamesType[]) => {
     dispatch({ type: ACTION_TYPES.SET_USER_GAMES_LIST, payload });
+    setFilteredUserGamesList(payload);
   };
 
   const setFilteredUserGamesList = (payload: GamesType[]) => {

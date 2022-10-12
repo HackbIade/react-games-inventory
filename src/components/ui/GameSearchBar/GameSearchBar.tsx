@@ -1,29 +1,8 @@
-import { useState } from "react";
-
 import { SearchInput, Container, SubContainer } from "./styles";
-import { useGlobalContext } from "../../../context";
+import { useUserGamesSearch } from "../../../hooks/useUserGamesSearch";
 
 export const GameSearchBar = () => {
-  const {
-    state: { userGameList },
-    setFilteredUserGamesList,
-  } = useGlobalContext();
-  const [search, setSearch] = useState("");
-
-  const handleInputChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(value);
-
-    const currentFilteredUserGameList = userGameList?.filter(
-      (game) =>
-        game.name?.toLowerCase()?.includes(value.toLowerCase()) ||
-        game.platform?.toLowerCase()?.includes(value.toLowerCase())
-    );
-
-    setFilteredUserGamesList(currentFilteredUserGameList || []);
-  };
-
+  const { search, handleChange } = useUserGamesSearch();
   return (
     <Container>
       <SubContainer>
@@ -33,7 +12,7 @@ export const GameSearchBar = () => {
           value={search}
           id="outlined-search"
           label="Search field"
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
       </SubContainer>
     </Container>

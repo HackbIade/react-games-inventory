@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { Skeleton } from "@mui/material";
 
-export const ListContainer = styled.div`
+export const ListContainer = styled(motion.ul)`
   margin: 0 auto;
   display: grid;
   grid-row-gap: 8px;

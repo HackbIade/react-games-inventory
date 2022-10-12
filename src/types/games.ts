@@ -1,9 +1,9 @@
 export type GamesType = {
-  name?: string;
+  name: string;
   cover?: string;
   tags?: string[];
   status?: string;
-  platform?: string;
+  platform: string;
   developer?: string;
   publisher?: string;
   completionDate?: Date;
