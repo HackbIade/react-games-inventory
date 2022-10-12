@@ -20,12 +20,12 @@ export const Container = styled(Card)`
 `;
 
 export const PlatformContainer = styled.img<{ bg?: string }>`
-  right: 0px;
-  bottom: 0px;
+  /* right: 0px;
+  bottom: 0px; */
   display: flex;
-  padding-right: 3px;
-  padding-bottom: 3px;
-  position: absolute;
+  /* padding-right: 3px; */
+  padding-bottom: 8px;
+  /* position: absolute; */
   align-items: center;
   justify-content: center;
   ${({ bg }) =>

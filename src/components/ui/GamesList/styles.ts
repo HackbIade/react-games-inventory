@@ -7,6 +7,7 @@ export const ListContainer = styled(motion.ul)`
   display: grid;
   grid-row-gap: 8px;
   grid-column-gap: 0px;
+  padding-inline-start: 0px;
   grid-template-columns: repeat(5, 1fr);
   @media (max-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
