@@ -1,5 +1,8 @@
-import { Card } from "@mui/material";
 import styled from "styled-components";
+import { Card, CardMedia, Typography } from "@mui/material";
+import SdCardIcon from "@mui/icons-material/SdCard";
+import QrCode2Icon from "@mui/icons-material/QrCode2";
+import { motion } from "framer-motion";
 
 export const Container = styled(Card)<{ bc: string }>`
   margin: 4px;
@@ -13,8 +16,6 @@ export const Container = styled(Card)<{ bc: string }>`
     ),
     #272727;
   background-blend-mode: soft-light, normal;
-  box-shadow: -53.1479px -53.1479px 106.296px rgba(51, 51, 51, 0.4),
-    17.716px 17.716px 70.8639px rgba(0, 0, 0, 0.8);
   border-radius: 8px;
   border-color: ${({ bc }) => bc};
 `;
@@ -30,4 +31,33 @@ export const PlatformImages = styled.img`
   margin: 0px;
   padding: 0px;
   height: 15px;
+`;
+
+export const Name = styled(Typography).attrs({
+  variant: "body1",
+  gutterBottom: true,
+})`
+  overflow: "hidden";
+  -webkitlineclamp: 2;
+  display: "-webkit-box";
+  -webkitboxorient: "vertical";
+`;
+
+export const KeyArt = styled(CardMedia).attrs({
+  height: "250",
+  component: "img",
+})``;
+
+export const DigitalIcon = styled(QrCode2Icon).attrs({
+  color: "primary",
+  fontSize: "small",
+})``;
+
+export const PhysicalIcon = styled(SdCardIcon).attrs({
+  color: "primary",
+  fontSize: "small",
+})``;
+
+export const AnimationContainer = styled(motion.li)`
+  list-style-type: none;
 `;
