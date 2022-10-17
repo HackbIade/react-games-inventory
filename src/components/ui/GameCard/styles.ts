@@ -37,10 +37,10 @@ export const Name = styled(Typography).attrs({
   variant: "body1",
   gutterBottom: true,
 })`
-  overflow: "hidden";
-  -webkitlineclamp: 2;
-  display: "-webkit-box";
-  -webkitboxorient: "vertical";
+  height: 3rem;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
 `;
 
 export const KeyArt = styled(CardMedia).attrs({
@@ -60,4 +60,10 @@ export const PhysicalIcon = styled(SdCardIcon).attrs({
 
 export const AnimationContainer = styled(motion.li)`
   list-style-type: none;
+`;
+
+export const CardBadges = styled.div`
+  left: 16px;
+  bottom: 16px;
+  position: fixed;
 `;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CardContent } from "@mui/material";
 import StyleIcon from "@mui/icons-material/Style";
 
@@ -15,8 +16,10 @@ import {
   PlatformImages,
   PlatformContainer,
   AnimationContainer,
+  CardBadges,
 } from "./styles";
 import { GameCardProps } from "./type";
+import { CustomPopover } from "../CustomPopover";
 
 export const GameCard = ({
   name,
@@ -27,6 +30,18 @@ export const GameCard = ({
   digitalVersion,
   trandingGameCard,
 }: GameCardProps) => {
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const onMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const onMouseLeave = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
   return (
     <AnimationContainer
       initial={{ y: 5, opacity: 0 }}
@@ -42,12 +57,15 @@ export const GameCard = ({
         </PlatformContainer>
         <KeyArt image={cover || "/images/no-found.png"} />
         <CardContent>
-          <Name>{name}</Name>
-          {digitalVersion ? <DigitalIcon /> : <PhysicalIcon />}
-          {trandingGameCard && <StyleIcon color="primary" fontSize="small" />}
-          {isLimitedRun && (
-            <img src="/images/limited_run_games.png" width={22} />
-          )}
+          <Name {...{ onMouseEnter, onMouseLeave }}>{name}</Name>
+          <CustomPopover {...{ name, open, anchorEl, onMouseLeave }} />
+          <CardBadges>
+            {digitalVersion ? <DigitalIcon /> : <PhysicalIcon />}
+            {trandingGameCard && <StyleIcon color="primary" fontSize="small" />}
+            {isLimitedRun && (
+              <img src="/images/limited_run_games.png" width={22} />
+            )}
+          </CardBadges>
         </CardContent>
       </Container>
     </AnimationContainer>
