@@ -24,6 +24,11 @@ export const globalReducer = (
         ...state,
         filteredUserGameList: payload,
       };
+    case ACTION_TYPES.SET_USER_TOTAL_GAMES:
+      return {
+        ...state,
+        userTotalGames: payload,
+      };
     default:
       return { ...state };
   }

@@ -17,11 +17,16 @@ export const GlobalState: React.FC<
 
   const setUserGamesList = (payload: GamesType[]) => {
     dispatch({ type: ACTION_TYPES.SET_USER_GAMES_LIST, payload });
+    setUserTotalGames(payload.length);
     setFilteredUserGamesList(payload);
   };
 
   const setFilteredUserGamesList = (payload: GamesType[]) => {
     dispatch({ type: ACTION_TYPES.SET_FILTERED_USER_GAMES, payload });
+  };
+
+  const setUserTotalGames = (payload: number) => {
+    dispatch({ type: ACTION_TYPES.SET_USER_TOTAL_GAMES, payload });
   };
 
   return (
