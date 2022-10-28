@@ -4,6 +4,7 @@ import { variants } from "./animation";
 import { useGlobalContext } from "../../context";
 import { AccesButton } from "../../components/ui";
 import { Title, UserInput, Container, Description } from "./styles";
+import { useRef } from "react";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ export const Home = () => {
     setUser(value);
   };
 
-  const handleAccess = () => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     navigate(`/collection?user=${user}`);
   };
 
@@ -26,8 +28,10 @@ export const Home = () => {
     <Container {...{ variants }} initial="hidden" animate="visible">
       <Title>Inventory</Title>
       <Description>TO GAMES & CONSOLES</Description>
-      <UserInput autoComplete="off" value={user} onChange={inputChange} />
-      <AccesButton show={!!user} onClick={handleAccess} />
+      <form {...{ onSubmit }}>
+        <UserInput autoComplete="off" value={user} onChange={inputChange} />
+        <AccesButton show={!!user} />
+      </form>
     </Container>
   );
 };
