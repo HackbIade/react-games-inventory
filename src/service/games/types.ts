@@ -2,23 +2,23 @@ import { AlertColor } from "@mui/material";
 
 import { GamesType } from "../../types";
 
-export interface GetGamesResponse {
+export type GetGamesResponse = {
   result: GamesType[];
-}
+};
 
-export interface GetGamesRequest {
+export type GetGamesRequest = {
   user: string;
-}
+};
 
-export interface AddGamesResponse {
+export type AddGamesResponse = {
   result: {
     message: string;
     status: AlertColor;
   };
-}
+};
 
-export interface AddGamesRequest {
+export type AddGamesRequest = {
   user: string;
   userCode: string;
   games: GamesType[];
-}
+};

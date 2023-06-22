@@ -1,3 +1,3 @@
-export * from "./types";
 export * from "./GlobalContext";
-export * from "./GlogalReducer";
+export * from "./GamesContext";
+export * from "./ConsolesContext";

@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 
 import { variants } from "./animation";
 import { useGlobalContext } from "../../context";
-import { AccesButton } from "../../components/ui";
+import { AccesButton } from "../../components/atoms";
 import { Title, UserInput, Container, Description } from "./styles";
-import { useRef } from "react";
 
-export const Home = () => {
+export const HomePage = () => {
   const navigate = useNavigate();
   const {
     setUser,
@@ -21,7 +20,7 @@ export const Home = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    navigate(`/collection?user=${user}`);
+    navigate(`/games?user=${user}`);
   };
 
   return (

@@ -1,0 +1,1 @@
+export { GamesInfoDialog } from "./GamesInfoDialog";

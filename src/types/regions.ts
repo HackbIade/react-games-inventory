@@ -1,3 +1,3 @@
-export interface RegionsType {
+export type RegionsType = {
   name: string;
-}
+};

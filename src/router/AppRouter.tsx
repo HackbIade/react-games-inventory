@@ -1,15 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
 import { AppContainer } from "./styles";
-import { Home, AddGames, Collection } from "../pages";
+import { HomePage, GamesPage } from "../pages";
 
 export const AppRouter = () => {
   return (
     <AppContainer>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add_games" element={<AddGames />} />
-        <Route path="/collection" element={<Collection />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/games" element={<GamesPage />} />
       </Routes>
     </AppContainer>
   );

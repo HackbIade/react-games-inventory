@@ -1,4 +1,4 @@
-export interface ConsolesType {
+export type ConsolesType = {
   name: string;
   icon?: string;
   type?: string;
@@ -6,12 +6,13 @@ export interface ConsolesType {
   developer?: string;
   generation?: string;
   releaseYear?: number;
+  addedToCollection?: Date;
   technicalSpecs?: ConsolesTechnicalSpecsType;
-}
+};
 
-export interface ConsolesTechnicalSpecsType {
+export type ConsolesTechnicalSpecsType = {
   cpu?: string;
   memory?: string;
   storage?: string;
   dimentions?: string;
-}
+};

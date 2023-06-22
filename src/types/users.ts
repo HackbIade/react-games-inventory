@@ -1,5 +1,5 @@
-export interface UsersTypes {
+export type UsersTypes = {
   name?: string;
-  userCode: string;
   avatar?: string;
-}
+  userCode: string;
+};

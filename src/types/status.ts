@@ -1,3 +1,3 @@
-export interface StatusType {
+export type StatusType = {
   name: string;
-}
+};

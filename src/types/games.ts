@@ -13,3 +13,9 @@ export type GamesType = {
   startedPlayingDate?: Date;
   trandingGameCard?: boolean;
 };
+
+
+export type ConsoleFilter = {
+  name: string;
+  shown: boolean;
+};

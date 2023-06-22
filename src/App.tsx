@@ -1,19 +1,22 @@
 import { ThemeProvider } from "@mui/material";
 import { ThemeProvider as StyledProvider } from "styled-components";
 
-import { AppRouter } from "./router/AppRouter";
-import { GlobalState } from "./context/GlobalState";
-
 import { theme } from "./themes";
+import { AppRouter } from "./router";
+import { GlobalState, GamesState, ConsolesState } from "./context";
 
 function App() {
   return (
     <GlobalState>
-      <ThemeProvider theme={theme}>
-        <StyledProvider theme={theme}>
-          <AppRouter />
-        </StyledProvider>
-      </ThemeProvider>
+      <GamesState>
+        <ConsolesState>
+          <ThemeProvider theme={theme}>
+            <StyledProvider theme={theme}>
+              <AppRouter />
+            </StyledProvider>
+          </ThemeProvider>
+        </ConsolesState>
+      </GamesState>
     </GlobalState>
   );
 }
