@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { TextField, Typography } from "@mui/material";
 
 export const Container = styled(motion.div)`
+  gap: 8px;
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/018/760/466/original/abstract-broken-glass-texture-png.png");
 `;
 
 export const Title = styled(Typography).attrs({

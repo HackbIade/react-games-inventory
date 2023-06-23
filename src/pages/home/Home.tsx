@@ -26,7 +26,6 @@ export const HomePage = () => {
   return (
     <Container {...{ variants }} initial="hidden" animate="visible">
       <Title>Inventory</Title>
-      <Description>TO GAMES & CONSOLES</Description>
       <WrappedForm {...{ onSubmit }}>
         <UserInput autoComplete="off" value={user} onChange={inputChange} />
         <AccesButton show={!!user} />
