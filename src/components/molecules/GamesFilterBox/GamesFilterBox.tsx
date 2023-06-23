@@ -34,21 +34,21 @@ export const GamesFilterBox = () => {
 
   return (
     <Container>
-      <Title>Opciones de filtrado:</Title>
+      <Title>Filter options:</Title>
       <>
-        <Subtitle>Buscar palabra clave:</Subtitle>
+        <Subtitle>Search by keyword:</Subtitle>
         <GameSearchBar />
       </>
       <Divider />
       <>
-        <Subtitle>Ordenar:</Subtitle>
-        <Text>Ascendente</Text>
-        <Text>Descendente</Text>
+        <Subtitle>Sort by:</Subtitle>
+        <Text>Ascendant</Text>
+        <Text>Descending</Text>
       </>
       <Divider />
       <>
         <Row>
-          <Subtitle>Mostrar / Ocultar Consolas:</Subtitle>
+          <Subtitle>Show/Hide:</Subtitle>
         </Row>
         <>
           {

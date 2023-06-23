@@ -12,14 +12,15 @@ import {
 import { FormValues, } from "./types";
 import { GamesType } from "../../../types";
 import { addGamesService } from "../../../service";
-import { CONSOLES_NAMES } from "../../../constants/consoles";
 import { useGamesContext, useGlobalContext } from "../../../context";
+import { useUserConsoles } from "../../../hooks";
 
 export const GameForm = () => {
   const {
     setUserGamesList,
     state: { userGameList },
   } = useGamesContext();
+  const { userConsolesList, isLoading, isError } = useUserConsoles();
   const { state: { user } } = useGlobalContext();
   const {
     reset,
@@ -33,7 +34,7 @@ export const GameForm = () => {
     status: AlertColor;
   }>({ open: false, status: "success", message: "" });
   const [disabled, setDisabled] = useState<boolean>(false);
-
+  const consolesNames = userConsolesList?.map(({ name }) => name);
   const addGame = async (userCode: string, game: GamesType) => {
     setDisabled(true);
     const {
@@ -128,22 +129,18 @@ export const GameForm = () => {
           render={({ field }) => (
             <TextFiledWrapper
               select
-              label="Platform"
               SelectProps={{
                 native: true,
               }}
               {...field}
               error={!!errors?.platform}
+              disabled={isLoading || isError}
               id="outlined-select-currency-native"
               helperText="Please select the platform"
             >
-              {(
-                Object.keys(CONSOLES_NAMES) as Array<
-                  keyof typeof CONSOLES_NAMES
-                >
-              ).map((key) => (
-                <option key={key} value={CONSOLES_NAMES[key]}>
-                  {CONSOLES_NAMES[key]}
+              {consolesNames?.map((name) => (
+                <option key={`console-drop-${name}`} value={name}>
+                  {name}
                 </option>
               ))}
             </TextFiledWrapper>

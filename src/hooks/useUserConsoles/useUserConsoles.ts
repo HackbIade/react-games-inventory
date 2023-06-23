@@ -29,7 +29,6 @@ export const useUserConsoles = (): useUserConsolesResponse => {
       setUserConsolesList(response.result);
       setFilteredUserConsolesList(response.result);
     }
-
     setIsLoading(false);
   };
 

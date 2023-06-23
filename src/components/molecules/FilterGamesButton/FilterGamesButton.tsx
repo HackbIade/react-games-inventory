@@ -11,7 +11,7 @@ export const FilterGamesButton = ({ onClose }: FilterGamesButtonProps) => {
 
   return (
     <FilterButton {...{ onClick }} >
-      <Text>Filtrar lista de juegos</Text>
+      <Text>Filter game list</Text>
     </FilterButton>
   );
 }

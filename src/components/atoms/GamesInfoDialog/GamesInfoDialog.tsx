@@ -20,7 +20,7 @@ export const GamesInfoDialog = ({
         </Title>
         <AddGamesButton {...{ onClose }} />
         <FilterGamesButton {...{ onClose }} />
-        <Text >{`Juegos totales: ${userTotalGames} und(s)`}</Text>
+        <Text >{`Total games: ${userTotalGames} und(s)`}</Text>
       </Container>
     </DialogWrapper>
   );

@@ -18,7 +18,7 @@ export const AddGamesButton = ({ onClose }: AddGamesButtonProps) => {
   return (
     !!user ? (
       <AddButton {...{ onClick }}>
-        <Text>Agregar nuevo juego</Text>
+        <Text>Add new game</Text>
       </AddButton>
     ) : null
   )
