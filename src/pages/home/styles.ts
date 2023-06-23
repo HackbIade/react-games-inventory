@@ -42,3 +42,10 @@ export const UserInput = styled(TextField).attrs({
 })`
   margin-bottom: 12px;
 `;
+
+export const WrappedForm = styled.form`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;

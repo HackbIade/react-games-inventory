@@ -9,7 +9,7 @@ export const AccesButton = ({ show, onClick }: AccessButtonProps) => {
       whileTap={{ scale: 0.95 }}
       animate={{ scale: Number(!!show) }}
     >
-      <Container color="error" {...{ onClick }}>
+      <Container color="error" {...{ onClick }} type="submit">
         <Union width={50} />
         <Text>Access</Text>
       </Container>
