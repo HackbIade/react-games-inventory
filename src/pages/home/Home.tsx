@@ -6,11 +6,11 @@ import { AccesButton } from "../../components/atoms";
 import { Title, UserInput, Container, Description, WrappedForm } from "./styles";
 
 export const HomePage = () => {
-  const navigate = useNavigate();
   const {
     setUser,
     state: { user },
   } = useGlobalContext();
+  const navigate = useNavigate();
 
   const inputChange = ({
     target: { value },
@@ -28,7 +28,7 @@ export const HomePage = () => {
       <Title>Inventory</Title>
       <WrappedForm {...{ onSubmit }}>
         <UserInput autoComplete="off" value={user} onChange={inputChange} />
-        <AccesButton show={!!user} />
+        {!!user && <AccesButton show={!!user} />}
       </WrappedForm>
     </Container>
   );

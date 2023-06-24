@@ -1,3 +1,4 @@
+export { Loading } from "./Loading";
 export { GameCard } from "./GameCard";
 export { GameForm } from "./GameForm";
 export { GamesList } from "./GamesList";

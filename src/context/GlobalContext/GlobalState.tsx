@@ -14,11 +14,16 @@ export const GlobalState: React.FC<
     dispatch({ type: ACTION_TYPES.SET_USER, payload });
   };
 
+  const setLoading = (payload: boolean) => {
+    dispatch({ type: ACTION_TYPES.SET_LOADING, payload })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         state,
         setUser,
+        setLoading,
       }}
     >
       {children}

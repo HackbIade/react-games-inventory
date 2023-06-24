@@ -9,12 +9,13 @@ import { useGlobalContext } from "../../context";
 export const useUserGames = (): useUserGamesResponse => {
   const {
     setUser,
+    setLoading,
     state: { user },
   } = useGlobalContext();
   const {
     setUserGamesList,
     setFilteredUserGamesList,
-    state: { userGameList, filteredUserGameList, userTotalGames },
+    state: { filteredUserGameList, userTotalGames },
   } = useGamesContext();
   const [searchParams] = useSearchParams();
   const [isError, setIsError] = useState<boolean>(false);
@@ -33,6 +34,11 @@ export const useUserGames = (): useUserGamesResponse => {
     }
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading]);
+  
 
   useEffect(() => {
     if (!user) {

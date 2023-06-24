@@ -14,6 +14,11 @@ export const globalReducer = (
         ...state,
         user: payload,
       };
+    case ACTION_TYPES.SET_LOADING:
+      return {
+        ...state,
+        loading: payload,
+      };
     default:
       return { ...state };
   }
