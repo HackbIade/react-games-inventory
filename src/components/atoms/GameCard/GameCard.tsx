@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { CardContent } from "@mui/material";
 import StyleIcon from "@mui/icons-material/Style";
 
-import {
-  GAME_IMAGES,
-  PLATFORM_BORDER_COLOR,
-  PLATFORM_CONTAINER_COLOR,
-} from "./utils";
 import {
   Name,
   KeyArt,
   Container,
+  CardBadges,
   DigitalIcon,
   PhysicalIcon,
   PlatformImages,
   PlatformContainer,
   AnimationContainer,
-  CardBadges,
+  WrappedCardContent,
 } from "./styles";
+import {
+  GAME_IMAGES,
+  PLATFORM_BORDER_COLOR,
+  PLATFORM_CONTAINER_COLOR,
+} from "./utils";
 import { GameCardProps } from "./type";
 import { CustomPopover } from "../CustomPopover";
 
@@ -41,7 +41,7 @@ export const GameCard = ({
   };
 
   const open = Boolean(anchorEl);
-
+  console.log({ platform })
   return (
     <AnimationContainer
       initial={{ y: 5, opacity: 0 }}
@@ -56,7 +56,7 @@ export const GameCard = ({
           <PlatformImages alt={platform} src={GAME_IMAGES[platform]} />
         </PlatformContainer>
         <KeyArt image={cover || "/images/no-found.png"} />
-        <CardContent>
+        <WrappedCardContent>
           <Name {...{ onMouseEnter, onMouseLeave }}>{name}</Name>
           <CustomPopover {...{ name, open, anchorEl, onMouseLeave }} />
           <CardBadges>
@@ -66,7 +66,7 @@ export const GameCard = ({
               <img src="/images/limited_run_games.png" width={22} />
             )}
           </CardBadges>
-        </CardContent>
+        </WrappedCardContent>
       </Container>
     </AnimationContainer>
   );

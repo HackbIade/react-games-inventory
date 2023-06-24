@@ -9,7 +9,6 @@ export const Container = styled(motion.div)`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-image: url("https://static.vecteezy.com/system/resources/previews/018/760/466/original/abstract-broken-glass-texture-png.png");
 `;
 
 export const Title = styled(Typography).attrs({

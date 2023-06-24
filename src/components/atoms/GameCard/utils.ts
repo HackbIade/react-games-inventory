@@ -1,6 +1,6 @@
 export const GAME_IMAGES: { [key: string]: string } = {
   "Nintendo Switch": "/platforms/nintendo_switch.png",
-  "PlayStation 4": "/platforms/playstation_4_.png",
+  "PlayStation 4": "/platforms/playstation_4.png",
   "PlayStation 5": "/platforms/playstation_5.png",
   "Xbox One": "/platforms/xbox_one.png",
   "Xbox 360": "/platforms/xbox_360.png",

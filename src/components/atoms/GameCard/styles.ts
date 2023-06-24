@@ -1,23 +1,20 @@
-import styled from "styled-components";
-import { Card, CardMedia, Typography } from "@mui/material";
+import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 import SdCardIcon from "@mui/icons-material/SdCard";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
-import { motion } from "framer-motion";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 export const Container = styled(Card)<{ bc: string }>`
   margin: 4px;
   height: 368px;
   max-width: 200px;
+  border-width: 0px;
   position: relative;
-  background: linear-gradient(
-      318.96deg,
-      rgba(0, 0, 0, 0.4) -1.9%,
-      rgba(36, 36, 36, 0.4) 105%
-    ),
-    #272727;
-  background-blend-mode: soft-light, normal;
   border-radius: 8px;
-  border-color: ${({ bc }) => bc};
+  text-shadow: 2px 1px 2px black;
+  background-blend-mode: soft-light, normal;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: ${({ bc }) => bc.concat("66")};
 `;
 
 export const PlatformContainer = styled.div<{ bc?: string }>`
@@ -66,4 +63,8 @@ export const CardBadges = styled.div`
   left: 16px;
   bottom: 16px;
   position: fixed;
+`;
+
+export const WrappedCardContent = styled(CardContent)`
+  padding: 8px;
 `;
