@@ -12,12 +12,14 @@ import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import AccountBox from "@mui/icons-material/AccountBox";
+import { useAuth } from "../../../context/AuthContext/AuthContext";
 
+// const settings = ["Profile",];
 const pages = ["games", "consoles", "achievements"];
-const settings = ["Profile", "Account", "Logout"];
 
 export const ResponsiveAppBar = () => {
   const navigate = useNavigate();
+  const { signOutUser, user } = useAuth();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -38,6 +40,10 @@ export const ResponsiveAppBar = () => {
 
   const handleNavigate = (route: string) => {
     navigate(`/${route}`)
+  }
+
+  const goToSigIn = () => {
+    navigate("/sign-in")
   }
 
   const handleCloseUserMenu = () => {
@@ -95,6 +101,7 @@ export const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open options">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -117,11 +124,21 @@ export const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {/* {settings.map((setting) => (
+              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{setting}</Typography>
+              </MenuItem>
+            ))} */}
+
+              {!!user?.uid ? (
+                <MenuItem key="logout" onClick={signOutUser}>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
-              ))}
+              ) : (
+                <MenuItem key="login" onClick={goToSigIn}>
+                  <Typography textAlign="center">Login</Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>

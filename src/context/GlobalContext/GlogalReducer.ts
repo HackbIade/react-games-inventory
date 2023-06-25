@@ -9,10 +9,10 @@ export const globalReducer = (
   { type, payload }: GlobalContextActionType
 ): GlobalStateType => {
   switch (type) {
-    case ACTION_TYPES.SET_USER:
+    case ACTION_TYPES.SET_GAME_TAG:
       return {
         ...state,
-        user: payload,
+        gameTag: payload,
       };
     case ACTION_TYPES.SET_LOADING:
       return {

@@ -21,7 +21,7 @@ export const GameForm = () => {
     state: { userGameList },
   } = useGamesContext();
   const { userConsolesList, isLoading, isError } = useUserConsoles();
-  const { state: { user } } = useGlobalContext();
+  const { state: { gameTag: user } } = useGlobalContext();
   const {
     reset,
     control,

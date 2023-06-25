@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 
 export const Container = styled(motion.div)`
   gap: 8px;
@@ -22,7 +22,6 @@ export const Description = styled(Typography)`
   display: flex;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 24px;
   font-style: normal;
   text-align: center;
   align-items: center;
@@ -38,7 +37,7 @@ export const Description = styled(Typography)`
 `;
 
 export const UserInput = styled(TextField).attrs({
-  label: "User",
+  label: "gameTag",
   required: true,
 })`
   margin-bottom: 12px;
@@ -48,5 +47,15 @@ export const WrappedForm = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+`;
+
+export const GoToSigInButton = styled(Button)`
+  bottom: 0px;
+  display: flex;
+  padding: 8px 24px;
+  margin-bottom: 8px;
+  position: absolute;
+  align-items: center;
   justify-content: center;
 `;

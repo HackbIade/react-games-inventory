@@ -1,17 +1,17 @@
 export type GlobalStateType = {
-  user: string;
+  gameTag: string;
   loading?: boolean;
 };
 
 export type GlobalContextType = {
   state: GlobalStateType;
-  setUser: (payload: string) => void;
+  setGameTag: (payload: string) => void;
   setLoading: (payload: boolean) => void;
 };
 
 export enum ACTION_TYPES {
-  SET_USER = "SET_USER",
   SET_LOADING = "SET_LOADING",
+  SET_GAME_TAG = "SET_GAME_TAG",
 }
 
 export type GlobalContextActionType = {

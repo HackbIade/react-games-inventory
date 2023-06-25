@@ -4,10 +4,10 @@ import { useSearchParams } from "react-router-dom";
 import { AddButton, Text } from "./styles";
 import { AddGamesButtonProps } from "./types";
 import { useGamesContext } from "../../../context";
+import { useAuth } from "../../../context/AuthContext/AuthContext";
 
 export const AddGamesButton = ({ onClose }: AddGamesButtonProps) => {
-  const [searchParams] = useSearchParams();
-  const user = searchParams.get("user") || "";
+  const { user } = useAuth();
   const { setShowAddGamesDrawer } = useGamesContext()
 
   const onClick = () => {
@@ -16,10 +16,8 @@ export const AddGamesButton = ({ onClose }: AddGamesButtonProps) => {
   };
 
   return (
-    !!user ? (
-      <AddButton {...{ onClick }}>
-        <Text>Add new game</Text>
-      </AddButton>
-    ) : null
+    <AddButton {...{ onClick }} disabled={!user?.uid || true}>
+      <Text disabled={!user?.uid || true}>Add new game</Text>
+    </AddButton>
   )
 };
