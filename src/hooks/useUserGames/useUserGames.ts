@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { getGamesService } from "../../service";
 import { useGamesContext } from "../../context";
 import { useUserGamesResponse } from "./types";
 import { useGlobalContext } from "../../context";
+import { getGamesService } from "../../service";
+import { GetGamesResponse } from "../../service/games/types";
 
 export const useUserGames = (): useUserGamesResponse => {
   const {
-    setUser,
     setLoading,
-    state: { user },
+    setGameTag,
+    state: { gameTag },
   } = useGlobalContext();
   const {
     setUserGamesList,
@@ -18,14 +19,19 @@ export const useUserGames = (): useUserGamesResponse => {
     state: { filteredUserGameList, userTotalGames },
   } = useGamesContext();
   const [searchParams] = useSearchParams();
+  const gameTagByParam = searchParams.get("gameTag") || "";
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const refetch = async () => {
     setIsError(false);
     setIsLoading(true);
-    const response = await getGamesService({ user });
-
+    let response: GetGamesResponse | null = null;
+    if (gameTag) {
+      response = await getGamesService({
+        user: gameTag,
+      });
+    }
     if (response === null) {
       setIsError(true);
     } else {
@@ -38,16 +44,14 @@ export const useUserGames = (): useUserGamesResponse => {
   useEffect(() => {
     setLoading(isLoading);
   }, [isLoading]);
-  
 
   useEffect(() => {
-    if (!user) {
-      const userByParams = searchParams.get("user") || "";
-      setUser(userByParams);
+    if (!gameTag) {
+      setGameTag(gameTagByParam);
     } else if (userTotalGames === null) {
       refetch();
     }
-  }, [user]);
+  }, [gameTag]);
 
   return {
     refetch,

@@ -1,17 +1,17 @@
 import React, { useReducer } from "react";
 
 import { globalReducer } from "./GlogalReducer";
+import { GlobalContext } from "./GlobalContext";
 import { GLOBAL_DEFAULT_INITIAL_STATE } from "./constants";
 import { ACTION_TYPES, GlobalStateProps } from "./types";
-import { GlobalContext } from "./GlobalContext";
 
 export const GlobalState: React.FC<
   React.PropsWithChildren<GlobalStateProps>
 > = ({ children, initialState = GLOBAL_DEFAULT_INITIAL_STATE }) => {
   const [state, dispatch] = useReducer(globalReducer, initialState);
 
-  const setUser = (payload: string) => {
-    dispatch({ type: ACTION_TYPES.SET_USER, payload });
+  const setGameTag = (payload: string) => {
+    dispatch({ type: ACTION_TYPES.SET_GAME_TAG, payload });
   };
 
   const setLoading = (payload: boolean) => {
@@ -22,7 +22,7 @@ export const GlobalState: React.FC<
     <GlobalContext.Provider
       value={{
         state,
-        setUser,
+        setGameTag,
         setLoading,
       }}
     >

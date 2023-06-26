@@ -1,1 +1,1 @@
-export * from "./games";
+export { addGamesService, getGamesService } from "./games";

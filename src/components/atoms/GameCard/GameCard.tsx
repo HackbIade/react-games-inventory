@@ -41,7 +41,7 @@ export const GameCard = ({
   };
 
   const open = Boolean(anchorEl);
-  console.log({ platform })
+
   return (
     <AnimationContainer
       initial={{ y: 5, opacity: 0 }}

@@ -6,8 +6,8 @@ import { getConsolesFromUserService } from "../../service";
 
 export const useUserConsoles = (): useUserConsolesResponse => {
   const {
-    setUser,
-    state: { user },
+    setGameTag: setUser,
+    state: { gameTag: user },
   } = useGlobalContext();
   const {
     setUserConsolesList,

@@ -1,8 +1,8 @@
-import { AccessButtonProps } from "./types";
+import { SearchButtonProps } from "./types";
 import { AnimationWrapper, Container, Text } from "./styles";
-import { ReactComponent as Union } from "../../../assets/svg/union.svg";
+import Search from "@mui/icons-material/Search";
 
-export const AccesButton = ({ show, onClick }: AccessButtonProps) => {
+export const SearchButton = ({ show, onClick }: SearchButtonProps) => {
   return (
     <AnimationWrapper
       initial={{ scale: 0 }}
@@ -10,7 +10,7 @@ export const AccesButton = ({ show, onClick }: AccessButtonProps) => {
       animate={{ scale: Number(!!show) }}
     >
       <Container color="error" {...{ onClick }} type="submit">
-        <Union width={50} />
+        <Search height={200} color="primary" />
         <Text>Search</Text>
       </Container>
     </AnimationWrapper>
