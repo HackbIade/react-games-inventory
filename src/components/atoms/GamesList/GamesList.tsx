@@ -5,14 +5,15 @@ import { EmptyStateContainer, ListContainer, MainContainer } from "./styles";
 import { listAnimation } from "./animation";
 import { useUserGames } from "../../../hooks/useUserGames/useUserGames";
 import { AddGamesButton } from "../AddGamesButton";
+import { useAuth } from "../../../context";
 
 export const GamesList = () => {
+  const { user } = useAuth();
   const { filteredUserGameList, isError, isLoading } = useUserGames();
   return (
-    <MainContainer>
+    <>
       <ListContainer variants={listAnimation} initial="hidden" animate="visible">
-        {
-          !isError &&
+        {!isError &&
           filteredUserGameList?.map((game, index) => (
             <GameCard index={index} key={index} {...game} />
           ))
@@ -24,9 +25,9 @@ export const GamesList = () => {
           <Typography variant="h5" color="white" align="center" margin={4}>
             Este gametag no tiene juegos asociados aún
           </Typography>
-          <AddGamesButton onClose={() => null} />
+          {user?.uid && <AddGamesButton onClose={() => null} />}
         </EmptyStateContainer>
       )}
-    </MainContainer>
+    </>
   );
 };
