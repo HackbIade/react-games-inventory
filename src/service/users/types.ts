@@ -7,3 +7,9 @@ export type GetUserFromUidResponse = {
     gameTag: string;
   };
 };
+
+export type SetUserToUIDRequest = {
+  uid: string;
+  gameTag: string;
+  platform: string;
+}

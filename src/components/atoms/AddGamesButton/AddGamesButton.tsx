@@ -16,8 +16,8 @@ export const AddGamesButton = ({ onClose }: AddGamesButtonProps) => {
   };
 
   return (
-    <AddButton {...{ onClick }} disabled={!user?.uid || true}>
-      <Text disabled={!user?.uid || true}>Add new game</Text>
+    <AddButton {...{ onClick }} disabled={!user?.uid}>
+      <Text disabled={!user?.uid}>Add new game</Text>
     </AddButton>
   )
 };

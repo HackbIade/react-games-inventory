@@ -1,25 +1,32 @@
 import { Typography } from "@mui/material";
 
 import { GameCard } from "../GameCard";
-import { ListContainer } from "./styles";
+import { EmptyStateContainer, ListContainer, MainContainer } from "./styles";
 import { listAnimation } from "./animation";
 import { useUserGames } from "../../../hooks/useUserGames/useUserGames";
+import { AddGamesButton } from "../AddGamesButton";
 
 export const GamesList = () => {
   const { filteredUserGameList, isError, isLoading } = useUserGames();
   return (
-    <ListContainer variants={listAnimation} initial="hidden" animate="visible">
-      {
-        !isError &&
-        filteredUserGameList?.map((game, index) => (
-          <GameCard index={index} key={index} {...game} />
-        ))
-      }
+    <MainContainer>
+      <ListContainer variants={listAnimation} initial="hidden" animate="visible">
+        {
+          !isError &&
+          filteredUserGameList?.map((game, index) => (
+            <GameCard index={index} key={index} {...game} />
+          ))
+        }
+      </ListContainer>
       {!isLoading && isError && (
-        <Typography variant="h4" color="white">
-          Ups! Nada que mostrar por acá
-        </Typography>
+        <EmptyStateContainer>
+          <img src="/images/nurusleep.gif" alt="sign up" />
+          <Typography variant="h5" color="white" align="center" margin={4}>
+            Este gametag no tiene juegos asociados aún
+          </Typography>
+          <AddGamesButton onClose={() => null} />
+        </EmptyStateContainer>
       )}
-    </ListContainer>
+    </MainContainer>
   );
 };

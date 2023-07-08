@@ -3,8 +3,7 @@ import { ThemeProvider as StyledProvider } from "styled-components";
 
 import { theme } from "./themes";
 import { AppRouter } from "./router";
-import { GlobalState, GamesState, ConsolesState } from "./context";
-import { AuthProvider } from "./context/AuthContext/AuthState";
+import { GlobalState, GamesState, ConsolesState, AuthProvider } from "./context";
 
 function App() {
   return (

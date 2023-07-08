@@ -15,7 +15,7 @@ import AccountBox from "@mui/icons-material/AccountBox";
 import { useAuth } from "../../../context/AuthContext/AuthContext";
 
 // const settings = ["Profile",];
-const pages = ["games", "consoles", "achievements"];
+const pages = ["games", "platforms", "achievements"];
 
 export const ResponsiveAppBar = () => {
   const navigate = useNavigate();

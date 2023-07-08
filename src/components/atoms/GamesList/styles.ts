@@ -25,3 +25,22 @@ export const CardSkeleton = styled(Skeleton)`
   border-radius: 4px;
   display: inline-block;
 `;
+
+export const EmptyStateContainer = styled.div`
+flex: 1;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+`
+
+export const MainContainer = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+`

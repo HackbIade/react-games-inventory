@@ -16,12 +16,13 @@ import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase"
 import { AuthContext } from "./AuthContext"
 import { AuthProviderProps } from "./types"
-import { getUserFromUidService } from "../../service"
 import { useGlobalContext } from "../GlobalContext"
+import { getUserFromUidService } from "../../service"
 
 export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
+  const [showAccountConfig, setShowAccountConfig] = useState<boolean>(false)
   const { setGameTag, setLoading } = useGlobalContext();
 
   function signUp(email: string, password: string): Promise<UserCredential> {
@@ -50,7 +51,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
 
   const signOutUser = async (): Promise<void> => {
     await signOut(auth);
-    navigate('/')
+    navigate('/sign-in')
   }
 
   const getGameTag = async () => {
@@ -60,9 +61,11 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
       const gameTag = result?.result?.gameTag;
       if (gameTag) {
         setGameTag(gameTag)
-        setLoading(false)
         navigate('/games');
+        setLoading(false);
       } else {
+        setLoading(false);
+        setShowAccountConfig(true)
         //todo go to create profile or add consoles
       }
     }
@@ -89,7 +92,9 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
     signIn,
     signOutUser,
     resetPassword,
+    showAccountConfig,
     updateUserProfile,
+    setShowAccountConfig,
   }
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }

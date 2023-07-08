@@ -1,0 +1,42 @@
+export enum PLATFORM_NAMES_NINETH_GENERATION {
+  PLAYSTATION_5 = "PlayStation 5",
+  XBOX_SERIES_X = "Xbox Series X",
+  XBOX_SERIES_S = "Xbox Series S",
+}
+
+export enum PLATFORM_NAMES_EIGHT_GENERATION {
+  WII_U = "Wii U",
+  XBOX_ONE = "Xbox One",
+  NINTENDO_3DS = "Nintendo 3DS",
+  PLAYSTATION_4 = "PlayStation 4",
+  NINTENDO_SWITHC = "Nintendo Switch",
+  PLAYSTATION_VITA = "PlayStation Vita",
+}
+
+export enum PLATFORM_NAMES_SEVENTH_GENERATION {
+  WII = "Wii",
+  XBOX_360 = "Xbox 360",
+  NINTENDO_DS = "Nintendo DS",
+  PLAYSTATION_3 = "PlayStation 3",
+  PLAYSTATION_PORTABLE = "PlayStation Portable",
+}
+
+export enum PLATFORM_NAMES_SIXTH_GENERATION {
+  XBOX="Xbox",
+  GAMECUBE= "GameCube",
+  DREAMCAST="Dreamcast",
+  PLAYSTATION_2="PlayStation 2",
+}
+
+export enum PLATFORM_NAMES_FIFTH_GENERATION {
+  NINTENDO_64="Nintendo 64",
+  PLAYSTATION="PlayStation"
+}
+
+export const PLATFORM_NAMES = {
+  ...PLATFORM_NAMES_FIFTH_GENERATION,
+  ...PLATFORM_NAMES_SIXTH_GENERATION,
+  ...PLATFORM_NAMES_SEVENTH_GENERATION,
+  ...PLATFORM_NAMES_EIGHT_GENERATION,
+  ...PLATFORM_NAMES_NINETH_GENERATION,
+};

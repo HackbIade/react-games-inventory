@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetUserFromUidRequest, GetUserFromUidResponse } from "./types";
+import { GetUserFromUidRequest, GetUserFromUidResponse, SetUserToUIDRequest } from "./types";
 
 export const getUserFromUidService = async ({
   uid,
@@ -23,3 +23,32 @@ export const getUserFromUidService = async ({
     return response;
   }
 };
+
+
+export const setUserToUIDService = async ({
+  uid,
+  gameTag,
+  platform,
+}: SetUserToUIDRequest) => {
+  let response = null;
+  try {
+    const result = await axios.post(
+      `${import.meta.env.VITE_MICROSERVICE_URL}/setUserToUID`,
+      {
+        data: {
+          uid,
+          gameTag,
+          platform,
+        }
+      }
+    )
+
+    if (result?.data) {
+      response = result.data;
+    }
+  } catch (_) {
+    
+  }finally{
+    return response
+  }
+}

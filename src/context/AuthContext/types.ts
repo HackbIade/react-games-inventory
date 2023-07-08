@@ -21,7 +21,9 @@ export type AuthContextModel = {
     photoURL?: string | null | undefined;
     displayName?: string | null | undefined;
   }) => Promise<void> | undefined;
+  showAccountConfig: boolean;
   signOutUser: () => Promise<void>;
+  setShowAccountConfig: (show: boolean) => void;
   sendPasswordResetEmail?: (email: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<UserCredential>;
   signUp: (email: string, password: string) => Promise<UserCredential>;
