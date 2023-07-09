@@ -37,7 +37,7 @@ export const SignUpPage = () => {
     setLoading(true)
     const { code, email, password } = formState;
 
-    if (!!email && !!password && !!code && code !== "123456") {
+    if (!!email && !!password && !!code && code === "123456") {
       try {
         await signUp(email, password);
       } catch (error) {
