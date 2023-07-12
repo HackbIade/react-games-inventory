@@ -14,7 +14,7 @@ export const Container = styled(Card)<{ bc: string }>`
   text-shadow: 2px 1px 2px black;
   background-blend-mode: soft-light, normal;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: ${({ bc }) => bc.concat("66")};
+  background-color: ${({ bc }) => bc?.concat("66")|| '#00000066'};
 `;
 
 export const PlatformContainer = styled.div<{ bc?: string }>`
