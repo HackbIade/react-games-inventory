@@ -21,7 +21,7 @@ export const GameForm = () => {
     state: { userGameList },
   } = useGamesContext();
   const { userConsolesList, isLoading, isError } = useUserConsoles();
-  const { state: { gameTag: user } } = useGlobalContext();
+  const { state: { gameTag: user }, setLoading } = useGlobalContext();
   const {
     reset,
     control,
@@ -36,6 +36,7 @@ export const GameForm = () => {
   const [disabled, setDisabled] = useState<boolean>(false);
   const consolesNames = userConsolesList?.map(({ name }) => name);
   const addGame = async (userCode: string, game: GamesType) => {
+    setLoading(true);
     setDisabled(true);
     const {
       result: { status, message },
@@ -57,6 +58,7 @@ export const GameForm = () => {
       reset({ name: "", cover: "", platform: "", userCode });
       setSnackState({ open: true, status, message });
     }
+    setLoading(false);
     setDisabled(false);
     setSnackState({ open: true, status, message });
   };

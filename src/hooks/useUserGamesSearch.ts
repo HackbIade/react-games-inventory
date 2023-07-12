@@ -1,13 +1,15 @@
-import { useState } from "react";
-
 import { useGamesContext } from "../context";
 
 export const useUserGamesSearch = () => {
   const {
-    state: { userGameList, consolesFilterApplied },
+    state: {
+      search,
+      userGameList,
+      consolesFilterApplied,
+    },
+    setSearch,
     setFilteredUserGamesList,
   } = useGamesContext();
-  const [search, setSearch] = useState("");
 
   const handleChange = ({
     target: { value },

@@ -37,6 +37,10 @@ export const GamesState: React.FC<
     dispatch({ type: GAMES_ACTION_TYPES.SET_CONSOLES_FILTERS_APPLIED, payload })
   }
 
+  const setSearch = (payload: string) => {
+    dispatch({ type: GAMES_ACTION_TYPES.SET_SEARCH, payload })
+  }
+
   useEffect(() => {
     if (state.consolesFilterApplied?.length > 0) {
       const newFilteredUserGames = state.userGameList.filter(({ platform }) =>
@@ -46,10 +50,12 @@ export const GamesState: React.FC<
   }, [state.consolesFilterApplied])
 
 
+
   return (
     <GamesContext.Provider
       value={{
         state,
+        setSearch,
         setUserGamesList,
         setShowAddGamesDrawer,
         setShowFilterGamesDrawer,

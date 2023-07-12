@@ -1,6 +1,7 @@
 import { ConsoleFilter, GamesType } from "../../types";
 
 export type GamesStateType = {
+  search: string;
   userGameList: GamesType[];
   showAddGamesDrawer: boolean;
   userTotalGames: number | null;
@@ -11,6 +12,7 @@ export type GamesStateType = {
 
 export type GamesContextType = {
   state: GamesStateType;
+  setSearch: (payload: string)=> void;
   setUserGamesList: (payload: GamesType[]) => void;
   setShowAddGamesDrawer: (payload: boolean) => void;
   setShowFilterGamesDrawer: (payload: boolean) => void;
@@ -19,6 +21,7 @@ export type GamesContextType = {
 };
 
 export enum GAMES_ACTION_TYPES {
+  SET_SEARCH = "SET_SEARCH",
   SET_USER_GAMES_LIST = "SET_USER_GAMES_LIST",
   SET_USER_TOTAL_GAMES = "SET_USER_TOTAL_GAMES",
   SET_FILTERED_USER_GAMES = "SET_FILTERED_USER_GAMES",

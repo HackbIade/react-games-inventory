@@ -39,6 +39,11 @@ export const gamesReducer = (
         ...state,
         consolesFilterApplied: payload,
       };
+    case GAMES_ACTION_TYPES.SET_SEARCH:
+      return {
+        ...state,
+        search: payload,
+      }
     default:
       return { ...state };
   }
