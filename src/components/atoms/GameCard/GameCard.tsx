@@ -13,25 +13,20 @@ import {
   AnimationContainer,
   WrappedCardContent,
 } from "./styles";
-import {
-  GAME_IMAGES,
-  PLATFORM_BORDER_COLOR,
-  PLATFORM_CONTAINER_COLOR,
-} from "./utils";
+
 import { GameCardProps } from "./type";
 import { CustomPopover } from "../CustomPopover";
+import { GAME_IMAGES, PLATFORM_BORDER_COLOR, PLATFORM_CONTAINER_COLOR } from "../../../constants/games";
+import { useGamesContext } from "../../../context";
+import { GameDetailModal } from "../../molecules";
 
 export const GameCard = ({
-  name,
+  game,
   index,
-  cover,
-  platform,
-  isLimitedRun,
-  digitalVersion,
-  trandingGameCard,
 }: GameCardProps) => {
+const [detailOpen, setDetailOpen] = useState<boolean>(false)
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
+  const { name, platform, cover, digitalVersion, trandingGameCard, isLimitedRun } = game;
   const onMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -42,6 +37,14 @@ export const GameCard = ({
 
   const open = Boolean(anchorEl);
 
+  const onClick = () => {
+    setDetailOpen(true);
+  };
+
+  const onClose = ()=>{
+    setDetailOpen(false);
+  }
+
   return (
     <AnimationContainer
       initial={{ y: 5, opacity: 0 }}
@@ -51,7 +54,7 @@ export const GameCard = ({
         transition: { delay: index < 10 ? index * 0.2 : 2 },
       }}
     >
-      <Container variant="outlined" bc={PLATFORM_BORDER_COLOR[platform]}>
+      <Container {...{ onClick }} variant="outlined" bc={PLATFORM_BORDER_COLOR[platform]}>
         <PlatformContainer bc={PLATFORM_CONTAINER_COLOR[platform]}>
           <PlatformImages alt={platform} src={GAME_IMAGES[platform]} />
         </PlatformContainer>
@@ -68,6 +71,7 @@ export const GameCard = ({
           </CardBadges>
         </WrappedCardContent>
       </Container>
+      <GameDetailModal {...{ game, open: detailOpen, onClose }} />
     </AnimationContainer>
   );
 };

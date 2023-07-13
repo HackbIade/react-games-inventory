@@ -1,5 +1,6 @@
 import { GamesType } from "../../../types";
 
-export type GameCardProps = GamesType & {
+export type GameCardProps = {
   index: number;
+  game: GamesType;
 };

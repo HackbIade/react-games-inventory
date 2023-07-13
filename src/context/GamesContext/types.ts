@@ -12,7 +12,7 @@ export type GamesStateType = {
 
 export type GamesContextType = {
   state: GamesStateType;
-  setSearch: (payload: string)=> void;
+  setSearch: (payload: string) => void;
   setUserGamesList: (payload: GamesType[]) => void;
   setShowAddGamesDrawer: (payload: boolean) => void;
   setShowFilterGamesDrawer: (payload: boolean) => void;

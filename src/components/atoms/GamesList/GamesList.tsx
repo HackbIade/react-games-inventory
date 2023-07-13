@@ -1,21 +1,23 @@
 import { Typography } from "@mui/material";
 
 import { GameCard } from "../GameCard";
-import { EmptyStateContainer, ListContainer, MainContainer } from "./styles";
-import { listAnimation } from "./animation";
-import { useUserGames } from "../../../hooks/useUserGames/useUserGames";
-import { AddGamesButton } from "../AddGamesButton";
 import { useAuth } from "../../../context";
+import { listAnimation } from "./animation";
+import { AddGamesButton } from "../AddGamesButton";
+import { EmptyStateContainer, ListContainer } from "./styles";
+import { useUserGames } from "../../../hooks/useUserGames/useUserGames";
+
 
 export const GamesList = () => {
   const { user } = useAuth();
   const { filteredUserGameList, isError, isLoading } = useUserGames();
+
   return (
     <>
       <ListContainer variants={listAnimation} initial="hidden" animate="visible">
         {!isError &&
           filteredUserGameList?.map((game, index) => (
-            <GameCard index={index} key={index} {...game} />
+            <GameCard key={index} {...{ index, game }} />
           ))
         }
       </ListContainer>

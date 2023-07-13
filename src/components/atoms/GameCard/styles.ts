@@ -21,7 +21,7 @@ export const PlatformContainer = styled.div<{ bc?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ bc }) => bc};
+  background: ${({ bc }) => bc || '#000000'} ;
 `;
 
 export const PlatformImages = styled.img`

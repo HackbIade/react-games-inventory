@@ -1,7 +1,7 @@
-import { Button, Container, Modal, Select, TextField, Typography } from "@mui/material";
+import { Button, Container, Dialog, Select, TextField } from "@mui/material";
 import styled from "styled-components";
 
-export const MainContainer = styled(Modal)`
+export const MainContainer = styled(Dialog)`
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,7 +12,6 @@ export const MainContainer = styled(Modal)`
 export const SubContainer = styled(Container).attrs({
   maxWidth: "xs"
 })`
-  border-radius: 8px;
   border: 1px solid #FECE03;
   background-color: #000000;
 `
