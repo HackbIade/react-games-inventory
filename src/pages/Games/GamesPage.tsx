@@ -22,7 +22,7 @@ export const GamesPage = () => {
         <AddGamesButton />
         <GameSearchBar />
         <BadgeContainer>
-          <Badge badgeContent={userTotalGames} color="primary">
+          <Badge badgeContent={userTotalGames} color="primary" max={1000}>
             <SportsEsportsIcon color="action" />
           </Badge>
         </BadgeContainer>
