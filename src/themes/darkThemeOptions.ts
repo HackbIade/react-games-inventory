@@ -9,10 +9,11 @@ export const darkThemeOptions: ThemeOptions = {
 export const theme = createTheme(darkThemeOptions, {
   palette: {
     primary: {
-      main: "#FECE03",
+      main: '#FECE03',
+      contrastText: '#121212',
     },
     secondary: {
-      main: "#121212",
+      main: '#121212',
     },
   },
 });

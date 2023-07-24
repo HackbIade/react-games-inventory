@@ -10,7 +10,7 @@ export const Search = styled('div')(({theme}) => ({
   margin: '0px 8px',
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    width: '80%',
+    width: '75%',
   },
 }));
 

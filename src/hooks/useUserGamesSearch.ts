@@ -2,12 +2,9 @@ import { useGamesContext } from "../context";
 
 export const useUserGamesSearch = () => {
   const {
-    state: {
-      search,
-      userGameList,
-      consolesFilterApplied,
-    },
+    state: {search, userGameList, consolesFilterApplied},
     setSearch,
+    setUserTotalGames,
     setFilteredUserGamesList,
   } = useGamesContext();
 
@@ -24,6 +21,7 @@ export const useUserGamesSearch = () => {
             filteredConsolesToSearch?.includes(game.platform)
         : game.name?.toLowerCase()?.includes(value.toLowerCase());
     });
+    setUserTotalGames(currentFilteredUserGameList.length);
     setFilteredUserGamesList(currentFilteredUserGameList || []);
   };
 

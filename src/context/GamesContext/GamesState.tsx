@@ -45,6 +45,7 @@ export const GamesState: React.FC<
     if (state.consolesFilterApplied?.length > 0) {
       const newFilteredUserGames = state.userGameList.filter(({ platform }) =>
         state.consolesFilterApplied.find(({ name }) => platform == name)?.shown === true)
+        setUserTotalGames(newFilteredUserGames.length);
       dispatch({ type: GAMES_ACTION_TYPES.SET_FILTERED_USER_GAMES, payload: newFilteredUserGames })
     }
   }, [state.consolesFilterApplied])
@@ -57,6 +58,7 @@ export const GamesState: React.FC<
         state,
         setSearch,
         setUserGamesList,
+        setUserTotalGames,
         setShowAddGamesDrawer,
         setShowFilterGamesDrawer,
         setFilteredUserGamesList,
