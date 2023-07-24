@@ -21,7 +21,10 @@ export const GamesList = () => {
       >
         {!isError &&
           filteredUserGameList?.map((game, index) => (
-            <GameCard key={index} {...{index, game}} />
+            <GameCard
+              key={`${game.name}-${game.platform}`}
+              {...{index, game}}
+            />
           ))}
       </ListContainer>
       {!isLoading && isError && (

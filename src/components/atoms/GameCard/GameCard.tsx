@@ -16,17 +16,24 @@ import {
 
 import { GameCardProps } from "./type";
 import { CustomPopover } from "../CustomPopover";
-import { GAME_IMAGES, PLATFORM_BORDER_COLOR, PLATFORM_CONTAINER_COLOR } from "../../../constants/games";
-import { useGamesContext } from "../../../context";
-import { GameDetailModal } from "../../molecules";
+import {
+  GAME_IMAGES,
+  PLATFORM_BORDER_COLOR,
+  PLATFORM_CONTAINER_COLOR,
+} from '../../../constants/games';
+import {GameDetailModal} from '../../molecules';
 
-export const GameCard = ({
-  game,
-  index,
-}: GameCardProps) => {
-const [detailOpen, setDetailOpen] = useState<boolean>(false)
+export const GameCard = ({game, index}: GameCardProps) => {
+  const [detailOpen, setDetailOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const { name, platform, cover, digitalVersion, trandingGameCard, isLimitedRun } = game;
+  const {
+    name,
+    platform,
+    cover,
+    digitalVersion,
+    trandingGameCard,
+    isLimitedRun,
+  } = game;
   const onMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -41,27 +48,31 @@ const [detailOpen, setDetailOpen] = useState<boolean>(false)
     setDetailOpen(true);
   };
 
-  const onClose = ()=>{
+  const onClose = () => {
     setDetailOpen(false);
-  }
+  };
 
   return (
     <AnimationContainer
-      initial={{ y: 5, opacity: 0 }}
+      initial={{y: 5, opacity: 0}}
       animate={{
         y: 0.5,
         opacity: 1,
-        transition: { delay: index < 10 ? index * 0.2 : 2 },
+        transition: {delay: index < 10 ? index * 0.2 : 2},
       }}
     >
-      <Container {...{ onClick }} variant="outlined" bc={PLATFORM_BORDER_COLOR[platform]}>
+      <Container
+        {...{onClick}}
+        variant="outlined"
+        bc={PLATFORM_BORDER_COLOR[platform]}
+      >
         <PlatformContainer bc={PLATFORM_CONTAINER_COLOR[platform]}>
           <PlatformImages alt={platform} src={GAME_IMAGES[platform]} />
         </PlatformContainer>
-        <KeyArt image={cover || "/images/no-found.png"} />
+        <KeyArt image={cover || '/images/no-found.png'} />
         <WrappedCardContent>
-          <Name {...{ onMouseEnter, onMouseLeave }}>{name}</Name>
-          <CustomPopover {...{ name, open, anchorEl, onMouseLeave }} />
+          <Name {...{onMouseEnter, onMouseLeave}}>{name}</Name>
+          <CustomPopover {...{name, open, anchorEl, onMouseLeave}} />
           <CardBadges>
             {digitalVersion ? <DigitalIcon /> : <PhysicalIcon />}
             {trandingGameCard && <StyleIcon color="primary" fontSize="small" />}
@@ -71,7 +82,10 @@ const [detailOpen, setDetailOpen] = useState<boolean>(false)
           </CardBadges>
         </WrappedCardContent>
       </Container>
-      <GameDetailModal {...{ game, open: detailOpen, onClose }} />
+      <GameDetailModal
+        key={`${game.name}-${game.platform}`}
+        {...{game, open: detailOpen, onClose}}
+      />
     </AnimationContainer>
   );
 };

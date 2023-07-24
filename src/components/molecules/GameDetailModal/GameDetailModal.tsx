@@ -61,10 +61,13 @@ export const GameDetailModal = ({ game, onClose, open }: GameDetailModalProps): 
       new Date());
 
   return (
-    <MainContainer {...{ open, onClose }}>
+    <MainContainer {...{open, onClose}}>
       <SubContainer maxWidth="xs">
         <PlatformContainer bc={PLATFORM_CONTAINER_COLOR[formState.platform]}>
-          <PlatformImages alt={formState.platform} src={GAME_IMAGES[formState.platform]} />
+          <PlatformImages
+            alt={formState.platform}
+            src={GAME_IMAGES[formState.platform]}
+          />
         </PlatformContainer>
         <CssBaseline />
         <BoxContainer>
@@ -80,15 +83,20 @@ export const GameDetailModal = ({ game, onClose, open }: GameDetailModalProps): 
                 onChange={handleSelectChange}
               >
                 {Object.entries(PLATFORM_NAMES)?.map(([_, platform]) => (
-                  <CustomMenuItem value={platform} >{platform}</CustomMenuItem>
+                  <CustomMenuItem key={platform} value={platform}>
+                    {platform}
+                  </CustomMenuItem>
                 ))}
               </CustomSelect>
             </FormControl>
             <CoverInput onChange={handleInputChange} value={formState.cover} />
-            <AddedToCollectionInput onChange={handleInputChange} value={formatedDate} />
+            <AddedToCollectionInput
+              onChange={handleInputChange}
+              value={formatedDate}
+            />
           </Form>
         </BoxContainer>
       </SubContainer>
     </MainContainer>
-  )
+  );
 }
