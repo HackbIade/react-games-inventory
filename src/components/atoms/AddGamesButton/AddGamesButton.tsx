@@ -1,23 +1,20 @@
+import {AddButton} from './styles';
+import {useGamesContext} from '../../../context';
 
-import { useSearchParams } from "react-router-dom";
+import {useAuth} from '../../../context/AuthContext/AuthContext';
+import {AddBox} from '@mui/icons-material';
 
-import { AddButton, Text } from "./styles";
-import { AddGamesButtonProps } from "./types";
-import { useGamesContext } from "../../../context";
-import { useAuth } from "../../../context/AuthContext/AuthContext";
-
-export const AddGamesButton = ({ onClose }: AddGamesButtonProps) => {
-  const { user } = useAuth();
-  const { setShowAddGamesDrawer } = useGamesContext()
+export const AddGamesButton = () => {
+  const {user} = useAuth();
+  const {setShowAddGamesDrawer} = useGamesContext();
 
   const onClick = () => {
     setShowAddGamesDrawer(true);
-    onClose();
   };
 
   return (
-    <AddButton {...{ onClick }} disabled={!user?.uid}>
-      <Text disabled={!user?.uid}>Add new game</Text>
+    <AddButton {...{onClick}} disabled={!user?.uid}>
+      <AddBox color="secondary" />
     </AddButton>
-  )
+  );
 };

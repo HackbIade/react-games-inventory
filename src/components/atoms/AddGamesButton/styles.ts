@@ -1,12 +1,12 @@
-import { Button, Typography } from "@mui/material";
-import styled, { css } from "styled-components";
+import styled, {css} from 'styled-components';
+import {IconButton, Typography} from '@mui/material';
 
-export const AddButton = styled(Button).attrs({
-  color: "primary",
-  "aria-label": "Add game",
+export const AddButton = styled(IconButton).attrs({
+  color: 'primary',
+  'aria-label': 'Add game',
 })`
   border-radius: 14.1429px;
-  ${({ disabled }) =>
+  ${({disabled}) =>
     disabled
       ? css`
           background-color: gray;
@@ -22,9 +22,9 @@ export const AddButton = styled(Button).attrs({
         `}
 `;
 
-export const Text = styled(Typography)<{ disabled?: boolean }>`
+export const Text = styled(Typography)<{disabled?: boolean}>`
   padding: 0px 18px;
   font-weight: 400;
   text-transform: capitalize;
-  color: ${({ disabled }) => (disabled ? "light-grey" : "#000000")};
+  color: ${({disabled}) => (disabled ? 'light-grey' : '#000000')};
 `;

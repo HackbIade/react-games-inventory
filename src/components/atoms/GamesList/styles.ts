@@ -18,6 +18,7 @@ export const ListContainer = styled(motion.ul)`
   @media (max-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  overflow-y: auto;
 `;
 
 export const CardSkeleton = styled(Skeleton)`

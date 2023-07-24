@@ -14,12 +14,15 @@ export const GamesList = () => {
 
   return (
     <>
-      <ListContainer variants={listAnimation} initial="hidden" animate="visible">
+      <ListContainer
+        variants={listAnimation}
+        initial="hidden"
+        animate="visible"
+      >
         {!isError &&
           filteredUserGameList?.map((game, index) => (
-            <GameCard key={index} {...{ index, game }} />
-          ))
-        }
+            <GameCard key={index} {...{index, game}} />
+          ))}
       </ListContainer>
       {!isLoading && isError && (
         <EmptyStateContainer>
@@ -27,7 +30,7 @@ export const GamesList = () => {
           <Typography variant="h5" color="white" align="center" margin={4}>
             Este gametag no tiene juegos asociados aún
           </Typography>
-          {user?.uid && <AddGamesButton onClose={() => null} />}
+          {user?.uid && <AddGamesButton />}
         </EmptyStateContainer>
       )}
     </>

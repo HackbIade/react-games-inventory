@@ -2,8 +2,7 @@ import { AddGamesButton } from "../AddGamesButton";
 import { useGamesContext } from "../../../context";
 import { GamesInfoDialogProps } from "./types";
 import { FilterGamesButton } from "../../molecules";
-import { Container, DialogWrapper, Title, Text } from "./styles";
-import { useAuth } from "../../../context/AuthContext/AuthContext";
+import {Container, DialogWrapper, Title, Text} from './styles';
 
 export const GamesInfoDialog = ({
   open,
@@ -14,14 +13,12 @@ export const GamesInfoDialog = ({
   } = useGamesContext();
 
   return (
-    <DialogWrapper {...{ open, onClose }}>
+    <DialogWrapper {...{open, onClose}}>
       <Container>
-        <Title >
-          🛠️ Collecion Tools
-        </Title>
-        <AddGamesButton {...{ onClose }} />
-        <FilterGamesButton {...{ onClose }} />
-        <Text >{`Total games: ${userTotalGames} und(s)`}</Text>
+        <Title>🛠️ Collecion Tools</Title>
+        <AddGamesButton />
+        <FilterGamesButton />
+        <Text>{`Total games: ${userTotalGames} und(s)`}</Text>
       </Container>
     </DialogWrapper>
   );

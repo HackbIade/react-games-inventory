@@ -1,17 +1,24 @@
-import { Container } from "./styles";
-import { GamesList, GamesToolsButton } from "../../components/atoms";
-import { ResponsiveAppBar, AddGamesDrawer, FilterGamesDrawer, GameDetailModal } from "../../components/molecules";
+import {
+  BottomNav,
+  AddGamesDrawer,
+  ResponsiveAppBar,
+  FilterGamesDrawer,
+} from '../../components/molecules';
+import {Container, Row} from './styles';
+import {AddGamesButton, GameSearchBar, GamesList} from '../../components/atoms';
 
 export const GamesPage = () => {
- 
-
   return (
     <Container>
       <ResponsiveAppBar />
+      <Row>
+        <AddGamesButton />
+        <GameSearchBar />
+      </Row>
       <GamesList />
       <AddGamesDrawer />
       <FilterGamesDrawer />
-      <GamesToolsButton />
+      <BottomNav />
     </Container>
   );
 };

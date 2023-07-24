@@ -8,13 +8,13 @@ export const GameSearchBar = () => {
   return (
     <Search>
       <SearchIconWrapper>
-        <SearchIcon />
+        <SearchIcon color="disabled" />
       </SearchIconWrapper>
       <StyledInputBase
         value={search}
         placeholder="Search…"
         onChange={handleChange}
-        inputProps={{ "aria-label": "search" }}
+        inputProps={{'aria-label': 'search'}}
       />
     </Search>
   );

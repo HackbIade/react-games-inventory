@@ -1,3 +1,3 @@
 export type FilterGamesButtonProps = {
-  onClose: () => void;
+  onClose?: () => void;
 };

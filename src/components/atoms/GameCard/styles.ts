@@ -60,11 +60,12 @@ export const AnimationContainer = styled(motion.li)`
 `;
 
 export const CardBadges = styled.div`
-  left: 16px;
-  bottom: 16px;
-  position: fixed;
+  left: 8px;
+  bottom: 0px;
+  position: absolute;
 `;
 
 export const WrappedCardContent = styled(CardContent)`
   padding: 8px;
+  position: relative;
 `;

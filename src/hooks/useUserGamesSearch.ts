@@ -12,17 +12,18 @@ export const useUserGamesSearch = () => {
   } = useGamesContext();
 
   const handleChange = ({
-    target: { value },
+    target: {value},
   }: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(value);
     const filteredConsolesToSearch = consolesFilterApplied
-      .filter(({ shown }) => shown === true)
-      .map(({ name }) => name);
-    const currentFilteredUserGameList = userGameList?.filter(
-      (game) =>
-        game.name?.toLowerCase()?.includes(value.toLowerCase()) &&
-        filteredConsolesToSearch.includes(game.platform)
-    );
+      .filter(({shown}) => shown === true)
+      .map(({name}) => name);
+    const currentFilteredUserGameList = userGameList?.filter(game => {
+      return filteredConsolesToSearch.length > 0
+        ? game.name?.toLowerCase()?.includes(value.toLowerCase()) &&
+            filteredConsolesToSearch?.includes(game.platform)
+        : game.name?.toLowerCase()?.includes(value.toLowerCase());
+    });
     setFilteredUserGamesList(currentFilteredUserGameList || []);
   };
 

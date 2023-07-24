@@ -1,17 +1,15 @@
-import { FilterButton, Text } from "./styles";
-import { FilterGamesButtonProps } from "./types";
-import { useGamesContext } from "../../../context";
+import {FilterButton, Text} from './styles';
+import {useGamesContext} from '../../../context';
 
-export const FilterGamesButton = ({ onClose }: FilterGamesButtonProps) => {
-  const { setShowFilterGamesDrawer } = useGamesContext()
+export const FilterGamesButton = () => {
+  const {setShowFilterGamesDrawer} = useGamesContext();
   const onClick = () => {
     setShowFilterGamesDrawer(true);
-    onClose();
   };
 
   return (
-    <FilterButton {...{ onClick }} >
+    <FilterButton {...{onClick}}>
       <Text>Filter game list</Text>
     </FilterButton>
   );
-}
+};
