@@ -19,6 +19,17 @@ export const ListContainer = styled(motion.ul)`
     grid-template-columns: repeat(2, 1fr);
   }
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 `;
 
 export const CardSkeleton = styled(Skeleton)`

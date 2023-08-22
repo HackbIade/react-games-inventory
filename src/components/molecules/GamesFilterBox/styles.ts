@@ -8,6 +8,17 @@ export const Container = styled.div`
   overflow-x: auto;
   padding: 8px 16px;
   flex-direction: row;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 `;
 
 export const Title = styled(Typography).attrs({
